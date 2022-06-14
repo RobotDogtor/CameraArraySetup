@@ -21,11 +21,11 @@
 	display: inline-block;
 
     background-color: #EEE;
-	width = 500px;
-	height = 500px;
-{
+	width:  500px;
+	height: 500px;
+}
 .table-color{
-	color: 
+	color: #EEE;
 }
 </style>
 </head>
@@ -484,6 +484,8 @@ var img11 = document.getElementById("imageDisplay11");
 
 var img12 = document.getElementById("imageDisplay12");
 
+var helloWorld = new HTMLString.String('Hello World');
+
 /**
 this function will turn all camera into recording mode
 **/
@@ -773,6 +775,9 @@ async function dataGetter(method, ip, parameter, connection,  status){
 //this function will be able to check the update of the 
 function screenshotUpdate() { // some information I can only get if I ask for it, so that's what I do here
 		
+		var con = document.getElementById('connect6');
+		con.innerHTML = "<span style='color: red;'>" + helloWorld + "Offline</span>";
+
 		img1.src = "http://10.19.2.200/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
 		img2.src = "http://10.19.2.201/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
 		img3.src = "http://10.19.2.202/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image

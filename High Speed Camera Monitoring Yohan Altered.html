@@ -446,6 +446,7 @@
 				<th><button onclick="camera1Save()">Save</button></th> 
 				<th><button onclick="camera_cal()">Black_Cal</button</th>
 				<th><button onclick="recording()">Stand by</button></th>
+				<th><button onclick="stop_recording()">Stop Recording Trigger</button></th>
 				
 		</div>
 	</div>	
@@ -521,11 +522,42 @@ function recording(){
 	}
 }
 
+function stop_recording(){
+	
+		//execute the function
+		turn_recording_off("http://10.19.2.200");
+		turn_recording_off("http://10.19.2.201");
+		turn_recording_off("http://10.19.2.202");
+		turn_recording_off("http://10.19.2.203");
+		turn_recording_off("http://10.19.2.204");
+		turn_recording_off("http://169.254.71.15");
+		turn_recording_off("http://169.254.71.16");
+		turn_recording_off("http://169.254.71.17");
+		turn_recording_off("http://169.254.71.18");
+		turn_recording_off("http://169.254.71.19");
+		turn_recording_off("http://169.254.71.20");
+		turn_recording_off("http://169.254.71.21");
+		turn_recording_off("http://169.254.71.22");
+		turn_recording_off("http://169.254.71.23");
+		turn_recording_off("http://169.254.71.24");
+		turn_recording_off("http://169.254.71.25");
+		turn_recording_off("http://169.254.71.26");
+		turn_recording_off("http://169.254.71.27");
+		turn_recording_off("http://169.254.71.28");
+		turn_recording_off("http://169.254.71.29");
+
+			
+}
+
 function turn_recording(ip)
 {
 	dataSender("startRecording",ip, "{}"); // turn on cameras
 }
 
+function turn_recording_off(ip)
+{
+	dataSender("stopRecording",ip, "{}"); // turn off cameras
+}
 /**
 since restarting cameras will mess up some camera setting(trigger mode)
 we create this function that one can setup trigger mode by using API
@@ -811,7 +843,7 @@ function screenshotUpdate() { // some information I can only get if I ask for it
 		dataGetter('get', 'http://169.254.71.10', 'state', 'connect50', 'status50');  //information for camera 6
 		
 }
-var intervalID = setInterval(screenshotUpdate, 500) ; // poll the cameras camera will be refreshed for ever
+var intervalID = setInterval(screenshotUpdate, 1000) ; // poll the cameras camera will be refreshed for ever
 
 </script>
 </html>
