@@ -21,11 +21,11 @@
 	display: inline-block;
 
     background-color: #EEE;
-	width = 500px;
-	height = 500px;
-{
+	width: 500px;
+	height: 500px;
+}
 .table-color{
-	color: 
+	color: #EEE;
 }
 </style>
 </head>
@@ -843,7 +843,8 @@ function screenshotUpdate() { // some information I can only get if I ask for it
 		dataGetter('get', 'http://169.254.71.10', 'state', 'connect50', 'status50');  //information for camera 6
 		
 }
-var intervalID = setInterval(screenshotUpdate, 1000) ; // poll the cameras camera will be refreshed for ever
+
+var intervalID = setInterval(screenshotUpdate, 10) ; // poll the cameras camera will be refreshed for ever
 
 </script>
 </html>

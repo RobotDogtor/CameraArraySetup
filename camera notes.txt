@@ -10,3 +10,7 @@ Need To:
     connect storage to be to the ONAP
     number all cameras (tape on them, ip addresses, folders on ONAP)
     Gonna have to update the softwar of all the cameras.
+
+layout of cameras:
+    rings are 0-9 from front to back, and 1-5 of each
+    so first ring is 1-5, second is 11-15
