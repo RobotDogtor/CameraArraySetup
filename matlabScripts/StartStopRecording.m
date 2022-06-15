@@ -27,3 +27,8 @@ response = webwrite(cameraURL,'format','h264','device','smb');
 
 cameraURL = 'http://10.19.2.200/control/p';
 response = webwrite(cameraURL,'frameRate','1000');
+
+%%
+
+response = webwrite(cameraURL,'ioMappingToggleSet','{ "source": "none", "debounce": false, "invert": false }');
+response = webwrite(cameraURL,'ioMappingToggleSet:source','none');

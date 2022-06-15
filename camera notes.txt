@@ -14,3 +14,23 @@ Need To:
 layout of cameras:
     rings are 0-9 from front to back, and 1-5 of each
     so first ring is 1-5, second is 11-15
+
+
+check that all io1 outs are full false and off
+make sure we're not in an always starting recording mode, otherwise stopping won't work
+
+QNAP:
+admin
+1234batlab!
+10.19.2.139
+
+
+wire them up, make sure working and update software
+update ip address to the number and the netmask
+enter in the smb location, User, 1234
+take off cap and calibrate
+set to turn off by unplug, turn on by replug
+check if color
+mount 
+run ethernet of proper length
+setup bnc cabeling
