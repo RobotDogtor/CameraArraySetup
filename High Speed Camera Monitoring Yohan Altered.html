@@ -102,7 +102,7 @@
 					<th id="connect3" style="color:blue"></th> 
 					<th id="status3" style="color:blue"></th>
 					<th id="batt3"></th>
-					<th><button onclick="window.location='http://10.19.2.202/IO.html';">Setup</button></th> 
+					<th><button onclick="window.location='http://10.19.2.103/IO.html';">Setup</button></th> 
 				  </tr>
 				</table>
 			</div>
@@ -495,7 +495,7 @@ function recording(){
 		//execute the function
 		turn_recording("http://10.19.2.200");
 		turn_recording("http://10.19.2.201");
-		turn_recording("http://10.19.2.202");
+		turn_recording("http://10.19.2.103");
 		turn_recording("http://10.19.2.203");
 		turn_recording("http://10.19.2.204");
 		turn_recording("http://169.254.71.15");
@@ -527,7 +527,7 @@ function stop_recording(){
 		//execute the function
 		turn_recording_off("http://10.19.2.200");
 		turn_recording_off("http://10.19.2.201");
-		turn_recording_off("http://10.19.2.202");
+		turn_recording_off("http://10.19.2.103");
 		turn_recording_off("http://10.19.2.203");
 		turn_recording_off("http://10.19.2.204");
 		turn_recording_off("http://169.254.71.15");
@@ -584,7 +584,7 @@ function camera_cal()
 	if(confirm("Perform black calibration to All cameras?")){
 		black_cal("startCalibration","http://10.19.2.200", 'blackCal=true');
 		black_cal("startCalibration","http://10.19.2.201", 'blackCal=true');
-		black_cal("startCalibration","http://10.19.2.202", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.103", 'blackCal=true');
 		black_cal("startCalibration","http://10.19.2.203", 'blackCal=true');
 		black_cal("startCalibration","http://10.19.2.204", 'blackCal=true');
 		
@@ -617,7 +617,7 @@ function camera1Save() {
 	//POST parameters to make cameras save their recording
 	saveWholeVideo("camera0","http://10.19.2.200");
 	saveWholeVideo("camera1","http://10.19.2.201");
-	saveWholeVideo("camera2","http://10.19.2.202");
+	saveWholeVideo("camera2","http://10.19.2.103");
 	saveWholeVideo("camera3","http://10.19.2.203");
 	saveWholeVideo("camera4","http://10.19.2.204");
 	saveWholeVideo("camera5","http://169.254.71.15");
@@ -775,7 +775,7 @@ function screenshotUpdate() { // some information I can only get if I ask for it
 		
 		img1.src = "http://10.19.2.200/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
 		img2.src = "http://10.19.2.201/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
-		img3.src = "http://10.19.2.202/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img3.src = "http://10.19.2.103/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
 		img4.src = "http://10.19.2.203/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
 		img5.src = "http://10.19.2.204/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
 		
@@ -790,7 +790,7 @@ function screenshotUpdate() { // some information I can only get if I ask for it
 		
 		dataGetter('get', 'http://10.19.2.200', 'state', 'connect1', 'status1');  //information for camera 1
 		dataGetter('get', 'http://10.19.2.201', 'state', 'connect2', 'status2');  //information for camera 2
-		dataGetter('get', 'http://10.19.2.202', 'state', 'connect3', 'status3');  //information for camera 3
+		dataGetter('get', 'http://10.19.2.103', 'state', 'connect3', 'status3');  //information for camera 3
 		dataGetter('get', 'http://10.19.2.203', 'state', 'connect4', 'status4');  //information for camera 4
 		dataGetter('get', 'http://10.19.2.204', 'state', 'connect5', 'status5');  //information for camera 5
 		

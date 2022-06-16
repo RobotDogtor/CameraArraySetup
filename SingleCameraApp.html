@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
+<title>Chronos</title>
+
+
+<style>
+.head-bar
+{
+	background-color: black;
+	color: white;
+	text-align:center
+}
+.screenshot
+{
+	width: 300px;
+	height: 300px;
+}
+.style-div
+{
+	display: inline-block;
+
+    background-color: #EEE;
+	width: 500px;
+	height: 500px;
+}
+.table-color{
+	color: #EEE;
+}
+</style>
+</head>
+
+
+<body onclick="">
+
+	
+ <div class="mainContainer"> 
+
+	
+	<div class="head-bar">
+		
+		<h2>High Speed Camera Array Monitor</h2>
+		
+	</div>
+
+
+	<div class="leftContainer">
+		<div id="videoDisplay" class="videoDisplay">
+			<div  class = "style-div" >
+				<img id="imageDisplay1" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#0</th>
+					<th id="connect1" style="color:blue"></th> 
+					<th id="status1" style="color:blue"></th>
+					<th id="batt1"></th>
+					<th><button onclick="window.location='http://10.19.2.103/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<hr style = "width: 100%;margin-left: auto;margin-right: auto;">
+		</div>
+	</div>	
+ </div>
+
+<br>
+
+
+</body>
+
+<script>
+
+
+var img1 = document.getElementById("imageDisplay1");
+
+/**
+this function will turn all camera into recording mode
+**/
+
+function recording(){
+	var txt = "default";
+	if(confirm("Turn on recording to every camera?"))
+	{
+		//execute the function
+		turn_recording("http://10.19.2.103");
+	}
+	else
+	{
+		txt = "you pressed cancel"
+	}
+}
+
+function stop_recording(){
+	
+		//execute the function
+		turn_recording_off("http://10.19.2.103");
+
+			
+}
+
+function turn_recording(ip)
+{
+	dataSender("startRecording",ip, "{}"); // turn on cameras
+}
+
+function turn_recording_off(ip)
+{
+	dataSender("stopRecording",ip, "{}"); // turn off cameras
+}
+/**
+since restarting cameras will mess up some camera setting(trigger mode)
+we create this function that one can setup trigger mode by using API
+**/
+function triggerSet6(ip){
+	if(confirm)
+	{	
+		//using datasender to pass settings to camera
+		
+		
+	}
+	else
+	{
+		// doing nothing
+	}
+}
+/**
+this function will black calibrate all cameras at the same time
+**/
+
+function camera_cal()
+{
+	var txt;
+	if(confirm("Perform black calibration to All cameras?")){
+		black_cal("startCalibration","http://10.19.2.103", 'blackCal=true');
+	}
+	else
+	{
+		txt = "You pressed Cancel";
+	}
+}
+
+function camera1Save() {
+  var txt;
+  if (confirm("Save All Cameras recording?")) {
+	//POST parameters to make cameras save their recording
+	saveWholeVideo("camera2","http://10.19.2.103");
+  } else {
+    txt = "You pressed Cancel!";
+  }
+}
+/**
+this method will make cameras saving the data
+**/
+var StorageLocation="smb";
+var format = "H.264 (mp4)"
+currentDate = new Date();
+function saveWholeVideo(cameraID, ip) {
+	var fileName = cameraID+"_"+currentDate.getMonth() + "_" + currentDate.getDay()+"_"+ currentDate.getHours()+"_"+currentDate.getMinutes();
+
+	if ( (StorageLocation != "")) { // storage location set and some frames recorded
+		var request = '{"device": "' + StorageLocation + '", "format": '
+		switch (format) {
+			case "CinemaDNG (raw)":
+				request += '"dng"' ; // use cinemaDNG files
+				break ;
+
+			case "TIFF (images)":
+				request += '"tiff"' ; // use tiff images
+				break ;
+
+			case "TIFF RAW (images)":
+				request += '"tiffRaw"' ; // use tiff RAW images
+				break ;
+
+			case "H.264 (mp4)":
+			default:
+				request += '"h264"' ; // use h.264 format (mp4)
+				break ;
+		
+		}
+
+		if (fileName != "") // a file name was given
+			request += ', "filename": "' + fileName + '"' ;
+
+		request += '}' ; // finish off the request
+
+
+		dataSender ("startFilesave",ip, request) ; // actually save the file
+	}
+	else {
+		if (StorageLocation == "")
+			document.getElementById("errorWhileSavingBox").firstChild.textContent = "Cannot save video. Please select a storage device." ;
+		else
+			document.getElementById("errorWhileSavingBox").firstChild.textContent = "Nothing to save. Please record something first." ;
+
+		document.getElementById("popUpBackground").classList.remove("hidden") ;
+		document.getElementById("errorWhileSavingBox").classList.remove("hidden") ; // show the reason why you're unable to save
+	}
+}
+
+
+
+/**
+**/
+function dataSender(method, ip, parameter){
+	var requestSender = new XMLHttpRequest() ;
+	requestSender.open("POST", ip + "/control/" + method) ;
+	requestSender.setRequestHeader("Content-Type", "application/json") ;
+	
+	requestSender.send(parameter) ;
+}
+/**
+API call black calibration function based on the passed ip address
+param
+"startCalibration"
+**/
+function black_cal(method, ip, parameter){
+	var requestSender = new XMLHttpRequest() ;
+	requestSender.open("GET", ip + "/control/" +method + ( (parameter !== "") ? "?" + parameter : "")) ;
+	requestSender.setRequestHeader("Content-Type", "application/json") ;
+
+	requestSender.onreadystatechange = function(){ // do something with the response
+		if (this.readyState == 4 && this.status == 200){
+			//callMeMaybe(requestSender.responseText) ; // call this function to deal with the input and update the page
+			 // callback function, passing in the string we got back
+		}
+	}
+	requestSender.send(parameter) ;
+}
+
+async function dataGetter(method, ip, parameter, connection,  status){
+	var con = document.getElementById(connection); //variable represent the connection status of the camera1, the camera will be considered as connected if it keeps updating the screenshot
+	var sta = document.getElementById(status);// show the status of the camera
+	//var trigger = document.getElementById(trigger_mode); //show the trigger mode of the camera
+														 //and in this case, we only care about IO1:toggle IO2: master/slave
+	var requestSender = new XMLHttpRequest() ;
+	requestSender.open("GET", ip + "/control/" + method + ( (parameter !== "") ? "?" + parameter : "")) ;
+	//requestSender.timeout = 1000;
+	requestSender.ontimeout = function (e)
+	{
+		con.innerHTML = "<span style='color: red;'>Offline</span>";
+		sta.innerHTML = "<span style='color: red;'>NULL</span>";
+		return;
+	}
+	requestSender.setRequestHeader("Content-Type", "application/json") ;
+
+	requestSender.onreadystatechange = function(){ // do something with the response
+		if (this.readyState == 4 && this.status == 200){
+			if(requestSender.responseText[0] == '{')
+			{
+				//when the function returned something then pase the returned JSON file
+				var returned = JSON.parse(requestSender.responseText);
+				if(returned.state == 'idle')
+				{
+					sta.innerHTML = "<span style='color: blue;'>"+returned.state+"</span>";
+				}
+				else if(returned.state = 'recording')
+				{
+					sta.innerHTML = "<span style='color: green;'>"+"record"+"</span>";
+				}
+				else
+				{
+					sta.innerHTML = "<span style='color: white;'>"+returned.state+"</span>";
+				}
+				con.innerHTML = "Online"
+			}
+			
+			 // callback function, passing in the string we got back
+		}
+		
+
+	}
+	requestSender.send(null); //sending back the null parameters
+	
+}
+
+
+
+
+
+//this function will be able to check the update of the 
+function screenshotUpdate() { // some information I can only get if I ask for it, so that's what I do here
+		
+		img1.src = "http://10.19.2.103/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		
+		dataGetter('get', 'http://10.19.2.103', 'state', 'connect1', 'status1');  //information for camera 3
+		
+}
+
+var intervalID = setInterval(screenshotUpdate, 333) ; // poll the cameras camera will be refreshed for ever
+
+</script>
+</html>
+
+
