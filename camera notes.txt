@@ -24,6 +24,8 @@ admin
 1234batlab!
 10.19.2.139
 
+camera
+batlab1234
 
 wire them up, make sure working and update software
 update ip address to the number and the netmask
@@ -34,3 +36,5 @@ check if color
 mount 
 run ethernet of proper length
 setup bnc cabeling
+
+pushd \\10.19.2.139\Public

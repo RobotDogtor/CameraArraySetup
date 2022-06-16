@@ -14,6 +14,8 @@ clc
 
 % web('http://10.19.2.200')
 
+urlread('http://10.19.2.105/control/p/config')
+
 
 %% 
 

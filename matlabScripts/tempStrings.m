@@ -12,11 +12,11 @@ cameraURL = 'http://10.19.2.101/control/p';
 options = weboptions('HeaderFields',{'Content-Type' 'application/json'});
 
 % When setting parameters inside another parameter, they should be nested.
-dataInside = struct('source', 'none', 'debounce', false, 'invert', false);
-dataOutside = struct('ioMappingToggleSet', dataInside);
+toggleSetStructIn = struct('source', 'none', 'debounce', false, 'invert', false);
+toggleSetStruct = struct('ioMappingToggleSet', toggleSetStructIn);
 
 % Change resolution via an HTTP POST request.
-response = webwrite(cameraURL,dataOutside,options);
+response = webwrite(cameraURL,toggleSetStruct,options);
 
 urlread('http://10.19.2.101/control/p/externalStorage')
 
