@@ -10,6 +10,7 @@ Need To:
     connect storage to be to the ONAP
     number all cameras (tape on them, ip addresses, folders on ONAP)
     Gonna have to update the softwar of all the cameras.
+    set resolution
 
 layout of cameras:
     rings are 0-9 from front to back, and 1-5 of each
@@ -24,17 +25,24 @@ admin
 1234batlab!
 10.19.2.139
 
-camera
-batlab1234
-
-wire them up, make sure working and update software
-update ip address to the number and the netmask
-enter in the smb location, User, 1234
-take off cap and calibrate
-set to turn off by unplug, turn on by replug
-check if color
-mount 
-run ethernet of proper length
-setup bnc cabeling
-
 pushd \\10.19.2.139\Public
+
+
+
+
+Setup Each Camera:
+	plug them in to power and ethernet
+	if old firmware, reflash sd cards with new firmware
+	software update
+	update ip address, netmask, smb storage location
+		usrnm: camera    pswd: batlab1234
+	take off cap and calibrate
+	run a checking script (check serial numbers for color and configure as followers)
+	open ip address and make sure see stream, auto power and smb location, IO settings are correct
+	Connect Via BNC Cables
+	run the recording script for these IPs 
+	run view script to see if works properly
+	reboot by unplugging to make sure it works 
+	confirm reboot with settings
+
+mount and do cabeling and power

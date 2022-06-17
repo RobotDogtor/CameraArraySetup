@@ -1,6 +1,8 @@
 
 % Script with all the anonymous functions to send settings to cameras
 
+%urlread('http://10.19.2.102/control/p/externalStorage')
+
 %% commands
 startRecording = @(url) urlread(['http://' url '/control/startRecording']);
 stopRecording = @(url) urlread(['http://' url '/control/stopRecording']);

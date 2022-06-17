@@ -6,5 +6,6 @@ function runSaveMethodOnURLs(URLs)
     for i = 1:length(URLs) 
        webwrite(['http://' URLs{i} '/control/startFilesave'],'format','h264','device','smb','filename',['Video_' currDateTime]);    
     end
+    % response = webwrite(cameraURL,'format','h264','device','smb','start',0,'length',500);
 end
 
