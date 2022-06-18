@@ -22,11 +22,12 @@ vidObj04 = VideoReader(grabLastFileFromCamera('camera04'));
 vidObj05 = VideoReader(grabLastFileFromCamera('camera05'));
 time = 0:0.001:vidObj02.Duration;
 
-vidObj02.CurrentTime = vidObj02.Duration*3/4;
-vidObj03.CurrentTime = vidObj03.Duration*3/4;
-vidObj04.CurrentTime = vidObj04.Duration*3/4;
-vidObj05.CurrentTime = vidObj05.Duration*3/4;
+vidObj02.CurrentTime = 32;
+vidObj03.CurrentTime = 32;
+vidObj04.CurrentTime = 32;
+vidObj05.CurrentTime = 32;
 
+%vidObj05.Duration*1/3
 figure(1)
 while hasFrame(vidObj02)
 %     vidFrame01 = rgb2gray(readFrame(vidObj01));

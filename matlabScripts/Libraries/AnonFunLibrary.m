@@ -10,6 +10,7 @@ stopSaving = @(url) webwrite(['http://' url '/control/stopFilesave']);
 saveToSmbDefaultName = @(url) webwrite(['http://' url '/control/startFilesave'],'format','h264','device','smb');
 
 setFrameRate = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
+setOverlayEnable = @(url) webwrite(['http://' url '/control/p'],'overlayEnable',true);
 
 
 %% IO Settings 
@@ -89,3 +90,6 @@ inputSettingFunctionsLeader = {setIOCombOr1;
                          setIODelayTime};
 % 'alwaysHigh'
 % 'io1' drive 2
+
+%% Shutter settings
+

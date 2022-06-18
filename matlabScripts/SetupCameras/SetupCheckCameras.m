@@ -1,5 +1,6 @@
 clear
 clc
+format compact
 
 %% Check Serial Numbers
 URLs = getSetupURLs();
