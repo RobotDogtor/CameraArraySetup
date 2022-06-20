@@ -46,3 +46,9 @@ Setup Each Camera:
 	confirm reboot with settings
 
 mount and do cabeling and power
+
+Method 2:
+flash firmware
+software update 
+ip address and smb
+both power mode
