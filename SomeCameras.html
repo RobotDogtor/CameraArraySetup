@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
+<title>Chronos</title>
+
+
+<style>
+.head-bar
+{
+	background-color: black;
+	color: white;
+	text-align:center
+}
+.screenshot
+{
+	width: 300px;
+	height: 300px;
+}
+.style-div
+{
+	display: inline-block;
+
+    background-color: #EEE;
+	width: 500px;
+	height: 500px;
+}
+.table-color{
+	color: #EEE;
+}
+</style>
+</head>
+
+
+<body onclick="">
+
+	
+ <div class="mainContainer"> 
+
+	
+	<div class="head-bar">
+		
+		<h2>High Speed Camera Array Monitor</h2>
+		
+	</div>
+
+
+	<div class="leftContainer">
+		<div id="videoDisplay" class="videoDisplay">
+			<div  class = "style-div" >
+				<img id="imageDisplay1" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#0</th>
+					<th id="connect1" style="color:blue"></th> 
+					<th id="status1" style="color:blue"></th>
+					<th id="batt1"></th>
+					<th><button onclick="window.location='http://10.19.2.101/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div class = "style-div" >
+				<img id="imageDisplay2" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#1</th>
+					<th id="connect2" style="color:blue"></th> 
+					<th id="status2" style="color:blue"></th>
+					<th id="batt2"></th>
+					<th><button onclick="window.location='http://10.19.2.102/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div  class = "style-div">
+				<img id="imageDisplay3" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#2</th>
+					<th id="connect3" style="color:blue"></th> 
+					<th id="status3" style="color:blue"></th>
+					<th id="batt3"></th>
+					<th><button onclick="window.location='http://10.19.2.103/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div  class = "style-div">
+				<img id="imageDisplay4" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#3</th>
+					<th id="connect4" style="color:blue"></th> 
+					<th id="status4" style="color:blue"></th>
+					<th id="batt4"></th>
+					<th><button onclick="window.location='http://10.19.2.104/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div  class = "style-div">
+				<img id="imageDisplay5" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#4</th>
+					<th id="connect5" style="color:blue"></th> 
+					<th id="status5" style="color:blue"></th>
+					<th id="batt5"></th>
+					<th><button onclick="window.location='http://10.19.2.105/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div  class = "style-div" >
+				<img id="imageDisplay6" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#5</th>
+					<th id="connect6" style="color:blue"></th> 
+					<th id="status6" style="color:blue"></th>
+					<th id="batt6"></th>
+					<th><button onclick="window.location='http://10.19.2.111/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			
+			<!--The second row of monitor-->
+			<div  class = "style-div" >
+				<img id="imageDisplay7" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#6</th>
+					<th id="connect7" style="color:blue"></th> 
+					<th id="status7" style="color:blue"></th>
+					<th id="batt7"></th>
+					<th><button onclick="window.location='http://10.19.2.112/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div class = "style-div" >
+				<img id="imageDisplay8" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#7</th>
+					<th id="connect8" style="color:blue"></th> 
+					<th id="status8" style="color:blue"></th>
+					<th id="batt8"></th>
+					<th><button onclick="window.location='http://10.19.2.113/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div  class = "style-div">
+				<img id="imageDisplay9" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#8</th>
+					<th id="connect9" style="color:blue"></th> 
+					<th id="status9" style="color:blue"></th>
+					<th id="batt9"></th>
+					<th><button onclick="window.location='http://10.19.2.114/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div  class = "style-div">
+				<img id="imageDisplay10" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#9</th>
+					<th id="connect10" style="color:blue"></th> 
+					<th id="status10" style="color:blue"></th>
+					<th id="batt10"></th>
+					<th><button onclick="window.location='http://10.19.2.115/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div  class = "style-div">
+				<img id="imageDisplay11" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+				  </tr>
+				  
+				  <tr>
+					<th>#10</th>
+					<th id="connect11" style="color:blue"></th> 
+					<th id="status11" style="color:blue"></th>
+					<th id="batt11"></th>
+					<th><button onclick="window.location='http://169.254.71.20/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<div  class = "style-div" >
+				<img id="imageDisplay12" alt="Screenshot Display", class = "screenshot">
+				<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>Connect </th> 
+					<th>Status</th>
+					<th>Battery</th>
+					<th>API</th>
+
+				  </tr>
+				  
+				  <tr>
+					<th>#11</th>
+					<th id="connect12" style="color:blue"></th> 
+					<th id="status12" style="color:blue"></th>
+					<th id="batt12"></th>
+					<th><button onclick="window.location='http://169.254.71.21/IO.html';">Setup</button></th> 
+				  </tr>
+				</table>
+			</div>
+			<hr style = "width: 100%;margin-left: auto;margin-right: auto;">
+
+			<table style="width:100%">
+				 <tr>
+					<th>Name</th>
+					<th>#12</th> 
+					<th>#13</th>
+					<th>#14</th>
+					<th>#15</th>
+					<th>#16</th>
+					<th>#17</th>
+					<th>#18</th>
+					<th>#19</th>
+					<th>#20</th>
+					<th>#21</th>
+					<th>#22</th>
+					<th>#23</th>
+					<th>#24</th>
+					<th>#25</th>
+					<th>#26</th>
+					<th>#27</th>
+					<th>#28</th>
+					<th>#29</th>
+					<th>#30</th>
+					<th>#31</th>
+					<th>#32</th>
+					<th>#33</th>
+					<th>#34</th>
+					<th>#35</th>
+					<th>#36</th>
+					<th>#37</th>
+					<th>#38</th>
+					<th>#39</th>
+					<th>#40</th>
+					<th>#41</th>
+					<th>#42</th>
+					<th>#43</th>
+					<th>#44</th>
+					
+				  </tr>
+				  
+				  <tr>
+					<th>Connect</th>
+					<th id="connect13" style="color:blue"></th> 
+					<th id="connect14" style="color:blue"></th> 
+					<th id="connect15" style="color:blue"></th> 
+					<th id="connect16" style="color:blue"></th> 
+					<th id="connect17" style="color:blue"></th> 
+					<th id="connect18" style="color:blue"></th> 
+					<th id="connect19" style="color:blue"></th> 
+					<th id="connect20" style="color:blue"></th> 
+					<th id="connect21" style="color:blue"></th> 
+					<th id="connect22" style="color:blue"></th> 
+					<th id="connect23" style="color:blue"></th> 
+					<th id="connect24" style="color:blue"></th> 
+					<th id="connect25" style="color:blue"></th> 
+					<th id="connect26" style="color:blue"></th> 
+					<th id="connect27" style="color:blue"></th> 
+					<th id="connect28" style="color:blue"></th> 
+					<th id="connect29" style="color:blue"></th> 
+					<th id="connect30" style="color:blue"></th> 
+					<th id="connect31" style="color:blue"></th> 
+					<th id="connect32" style="color:blue"></th> 
+					<th id="connect33" style="color:blue"></th> 
+					<th id="connect34" style="color:blue"></th> 
+					<th id="connect35" style="color:blue"></th> 
+					<th id="connect36" style="color:blue"></th> 
+					<th id="connect37" style="color:blue"></th> 
+					<th id="connect38" style="color:blue"></th> 
+					<th id="connect39" style="color:blue"></th> 
+					<th id="connect40" style="color:blue"></th> 
+					<th id="connect41" style="color:blue"></th> 
+					<th id="connect42" style="color:blue"></th>
+					<th id="connect43" style="color:blue"></th> 
+					<th id="connect44" style="color:blue"></th> 
+					<th id="connect45" style="color:blue"></th> 
+					
+				  </tr>
+				  
+				  <tr>
+					<th>Status</th>
+					<th id="status13" style="color:blue"></th>
+					<th id="status14" style="color:blue"></th>
+					<th id="status15" style="color:blue"></th>
+					<th id="status16" style="color:blue"></th>
+					<th id="status17" style="color:blue"></th>
+					<th id="status18" style="color:blue"></th>
+					<th id="status19" style="color:blue"></th>
+					<th id="status20" style="color:blue"></th>
+					<th id="status21" style="color:blue"></th>
+					<th id="status22" style="color:blue"></th>
+					<th id="status23" style="color:blue"></th>
+					<th id="status24" style="color:blue"></th>
+					<th id="status25" style="color:blue"></th>
+					<th id="status26" style="color:blue"></th>
+					<th id="status27" style="color:blue"></th>
+					<th id="status28" style="color:blue"></th>
+					<th id="status29" style="color:blue"></th>
+					<th id="status30" style="color:blue"></th>
+					<th id="status31" style="color:blue"></th>
+					<th id="status32" style="color:blue"></th>
+					<th id="status33" style="color:blue"></th>
+					<th id="status34" style="color:blue"></th>
+					<th id="status35" style="color:blue"></th>
+					<th id="status36" style="color:blue"></th>
+					<th id="status37" style="color:blue"></th>
+					<th id="status38" style="color:blue"></th>
+					<th id="status39" style="color:blue"></th>
+					<th id="status40" style="color:blue"></th>
+					<th id="status41" style="color:blue"></th>
+					<th id="status42" style="color:blue"></th>
+					<th id="status43" style="color:blue"></th>
+					<th id="status44" style="color:blue"></th>
+					<th id="status45" style="color:blue"></th>
+				  </tr>
+				  <th>API</th>
+				  <th><button onclick="window.location='http://169.254.71.22/IO.html';">Setup</button></th>
+				  <th><button onclick="window.location='http://169.254.71.23/IO.html';">Setup</button></th>
+				  <th><button onclick="window.location='http://169.254.71.24/IO.html';">Setup</button></th>
+				  <th><button onclick="window.location='http://169.254.71.25/IO.html';">Setup</button></th>
+				  <th><button onclick="window.location='http://169.254.71.26/IO.html';">Setup</button></th>
+				  <th><button onclick="window.location='http://169.254.71.27/IO.html';">Setup</button></th>
+				  <th><button onclick="window.location='http://169.254.71.28/IO.html';">Setup</button></th>
+				  <th><button onclick="window.location='http://169.254.71.29/IO.html';">Setup</button></th>
+				  </th>
+					<br>
+				
+				  <tr>
+					<th>Name</th>	
+					<th>#45</th>
+					<th>#46</th>
+					<th>#47</th>
+					<th>#48</th>
+					<th>#49</th>
+				  </tr>
+				  <tr>
+					<th>Connect</th>
+					<th id="connect46" style="color:blue"></th> 
+					<th id="connect47" style="color:blue"></th> 
+					<th id="connect48" style="color:blue"></th> 
+					<th id="connect49" style="color:blue"></th> 
+					<th id="connect50" style="color:blue"></th> 
+				  </tr>
+				  <tr>
+				    <th>Status</th>
+					<th id="status46" style="color:blue"></th>
+					<th id="status47" style="color:blue"></th>
+					<th id="status48" style="color:blue"></th>
+					<th id="status49" style="color:blue"></th>
+					<th id="status50" style="color:blue"></th>
+				  </tr>
+				 
+				</table>
+				<hr style = "width: 100%;margin-left: auto;margin-right: auto;"> 
+				<th><button onclick="camera1Save()">Save</button></th> 
+				<th><button onclick="camera_cal()">Black_Cal</button</th>
+				<th><button onclick="recording()">Stand by</button></th>
+				<th><button onclick="stop_recording()">Stop Recording Trigger</button></th>
+				
+		</div>
+	</div>	
+ </div>
+
+<br>
+
+
+</body>
+
+<script>
+
+
+var img1 = document.getElementById("imageDisplay1");
+
+var img2 = document.getElementById("imageDisplay2");
+
+var img3 = document.getElementById("imageDisplay3");
+
+var img4 = document.getElementById("imageDisplay4");
+
+var img5 = document.getElementById("imageDisplay5");
+
+var img6 = document.getElementById("imageDisplay6");
+
+var img7 = document.getElementById("imageDisplay7");
+
+var img8 = document.getElementById("imageDisplay8");
+
+var img9 = document.getElementById("imageDisplay9");
+
+var img10 = document.getElementById("imageDisplay10");
+
+var img11 = document.getElementById("imageDisplay11");
+
+var img12 = document.getElementById("imageDisplay12");
+
+/**
+this function will turn all camera into recording mode
+**/
+
+function recording(){
+	var txt = "default";
+	if(confirm("Turn on recording to every camera?"))
+	{
+		//execute the function
+		turn_recording("http://10.19.2.101");
+		turn_recording("http://10.19.2.102");
+		turn_recording("http://10.19.2.103");
+		turn_recording("http://10.19.2.104");
+		turn_recording("http://10.19.2.105");
+		turn_recording("http://10.19.2.111");
+		turn_recording("http://10.19.2.112");
+		turn_recording("http://10.19.2.113");
+		turn_recording("http://10.19.2.114");
+		turn_recording("http://10.19.2.115");
+		turn_recording("http://169.254.71.20");
+		turn_recording("http://169.254.71.21");
+		turn_recording("http://169.254.71.22");
+		turn_recording("http://169.254.71.23");
+		turn_recording("http://169.254.71.24");
+		turn_recording("http://169.254.71.25");
+		turn_recording("http://169.254.71.26");
+		turn_recording("http://169.254.71.27");
+		turn_recording("http://169.254.71.28");
+		turn_recording("http://169.254.71.29");
+
+		
+	}
+	else
+	{
+		txt = "you pressed cancel"
+	}
+}
+
+function stop_recording(){
+	
+		//execute the function
+		turn_recording_off("http://10.19.2.101");
+		turn_recording_off("http://10.19.2.102");
+		turn_recording_off("http://10.19.2.103");
+		turn_recording_off("http://10.19.2.104");
+		turn_recording_off("http://10.19.2.105");
+		turn_recording_off("http://10.19.2.111");
+		turn_recording_off("http://10.19.2.112");
+		turn_recording_off("http://10.19.2.113");
+		turn_recording_off("http://10.19.2.114");
+		turn_recording_off("http://10.19.2.115");
+		turn_recording_off("http://169.254.71.20");
+		turn_recording_off("http://169.254.71.21");
+		turn_recording_off("http://169.254.71.22");
+		turn_recording_off("http://169.254.71.23");
+		turn_recording_off("http://169.254.71.24");
+		turn_recording_off("http://169.254.71.25");
+		turn_recording_off("http://169.254.71.26");
+		turn_recording_off("http://169.254.71.27");
+		turn_recording_off("http://169.254.71.28");
+		turn_recording_off("http://169.254.71.29");
+
+			
+}
+
+function turn_recording(ip)
+{
+	dataSender("startRecording",ip, "{}"); // turn on cameras
+}
+
+function turn_recording_off(ip)
+{
+	dataSender("stopRecording",ip, "{}"); // turn off cameras
+}
+/**
+since restarting cameras will mess up some camera setting(trigger mode)
+we create this function that one can setup trigger mode by using API
+**/
+function triggerSet6(ip){
+	if(confirm)
+	{	
+		//using datasender to pass settings to camera
+		
+		
+	}
+	else
+	{
+		// doing nothing
+	}
+}
+/**
+this function will black calibrate all cameras at the same time
+**/
+
+function camera_cal()
+{
+	var txt;
+	if(confirm("Perform black calibration to All cameras?")){
+		black_cal("startCalibration","http://10.19.2.101", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.102", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.103", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.104", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.105", 'blackCal=true');
+		
+		black_cal("startCalibration","http://10.19.2.111", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.112", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.113", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.114", 'blackCal=true');
+		black_cal("startCalibration","http://10.19.2.115", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.20", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.21", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.22", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.23", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.24", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.25", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.26", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.27", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.28", 'blackCal=true');
+		black_cal("startCalibration","http://169.254.71.29", 'blackCal=true');
+		
+	}
+	else
+	{
+		txt = "You pressed Cancel";
+	}
+}
+
+function camera1Save() {
+  var txt;
+  if (confirm("Save All Cameras recording?")) {
+	//POST parameters to make cameras save their recording
+	saveWholeVideo("camera0","http://10.19.2.101");
+	saveWholeVideo("camera1","http://10.19.2.102");
+	saveWholeVideo("camera2","http://10.19.2.103");
+	saveWholeVideo("camera3","http://10.19.2.104");
+	saveWholeVideo("camera4","http://10.19.2.105");
+	saveWholeVideo("camera5","http://10.19.2.111");
+	saveWholeVideo("camera6","http://10.19.2.112");
+	saveWholeVideo("camera7","http://10.19.2.113");
+	saveWholeVideo("camera8","http://10.19.2.114");
+	saveWholeVideo("camera9","http://10.19.2.115");
+	saveWholeVideo("camera10","http://169.254.71.20");
+	saveWholeVideo("camera11","http://169.254.71.21");
+	saveWholeVideo("camera12","http://169.254.71.22");
+	saveWholeVideo("camera13","http://169.254.71.23");
+	saveWholeVideo("camera14","http://169.254.71.24");
+	saveWholeVideo("camera15","http://169.254.71.25");
+	saveWholeVideo("camera16","http://169.254.71.26");
+	saveWholeVideo("camera17","http://169.254.71.27");
+	saveWholeVideo("camera18","http://169.254.71.28");
+	saveWholeVideo("camera19","http://169.254.71.29");
+	
+  } else {
+    txt = "You pressed Cancel!";
+  }
+}
+/**
+this method will make cameras saving the data
+**/
+var StorageLocation="smb";
+var format = "H.264 (mp4)"
+currentDate = new Date();
+function saveWholeVideo(cameraID, ip) {
+	var fileName = cameraID+"_"+currentDate.getMonth() + "_" + currentDate.getDay()+"_"+ currentDate.getHours()+"_"+currentDate.getMinutes();
+
+	if ( (StorageLocation != "")) { // storage location set and some frames recorded
+		var request = '{"device": "' + StorageLocation + '", "format": '
+		switch (format) {
+			case "CinemaDNG (raw)":
+				request += '"dng"' ; // use cinemaDNG files
+				break ;
+
+			case "TIFF (images)":
+				request += '"tiff"' ; // use tiff images
+				break ;
+
+			case "TIFF RAW (images)":
+				request += '"tiffRaw"' ; // use tiff RAW images
+				break ;
+
+			case "H.264 (mp4)":
+			default:
+				request += '"h264"' ; // use h.264 format (mp4)
+				break ;
+		
+		}
+
+		if (fileName != "") // a file name was given
+			request += ', "filename": "' + fileName + '"' ;
+
+		request += '}' ; // finish off the request
+
+
+		dataSender ("startFilesave",ip, request) ; // actually save the file
+	}
+	else {
+		if (StorageLocation == "")
+			document.getElementById("errorWhileSavingBox").firstChild.textContent = "Cannot save video. Please select a storage device." ;
+		else
+			document.getElementById("errorWhileSavingBox").firstChild.textContent = "Nothing to save. Please record something first." ;
+
+		document.getElementById("popUpBackground").classList.remove("hidden") ;
+		document.getElementById("errorWhileSavingBox").classList.remove("hidden") ; // show the reason why you're unable to save
+	}
+}
+
+
+
+/**
+**/
+function dataSender(method, ip, parameter){
+	var requestSender = new XMLHttpRequest() ;
+	requestSender.open("POST", ip + "/control/" + method) ;
+	requestSender.setRequestHeader("Content-Type", "application/json") ;
+	
+	requestSender.send(parameter) ;
+}
+/**
+API call black calibration function based on the passed ip address
+param
+"startCalibration"
+**/
+function black_cal(method, ip, parameter){
+	var requestSender = new XMLHttpRequest() ;
+	requestSender.open("GET", ip + "/control/" +method + ( (parameter !== "") ? "?" + parameter : "")) ;
+	requestSender.setRequestHeader("Content-Type", "application/json") ;
+
+	requestSender.onreadystatechange = function(){ // do something with the response
+		if (this.readyState == 4 && this.status == 200){
+			//callMeMaybe(requestSender.responseText) ; // call this function to deal with the input and update the page
+			 // callback function, passing in the string we got back
+		}
+	}
+	requestSender.send(parameter) ;
+}
+
+async function dataGetter(method, ip, parameter, connection,  status){
+	var con = document.getElementById(connection); //variable represent the connection status of the camera1, the camera will be considered as connected if it keeps updating the screenshot
+	var sta = document.getElementById(status);// show the status of the camera
+	//var trigger = document.getElementById(trigger_mode); //show the trigger mode of the camera
+														 //and in this case, we only care about IO1:toggle IO2: master/slave
+	var requestSender = new XMLHttpRequest() ;
+	requestSender.open("GET", ip + "/control/" + method + ( (parameter !== "") ? "?" + parameter : "")) ;
+	//requestSender.timeout = 1000;
+	requestSender.ontimeout = function (e)
+	{
+		con.innerHTML = "<span style='color: red;'>Offline</span>";
+		sta.innerHTML = "<span style='color: red;'>NULL</span>";
+		return;
+	}
+	requestSender.setRequestHeader("Content-Type", "application/json") ;
+
+	requestSender.onreadystatechange = function(){ // do something with the response
+		if (this.readyState == 4 && this.status == 200){
+			if(requestSender.responseText[0] == '{')
+			{
+				//when the function returned something then pase the returned JSON file
+				var returned = JSON.parse(requestSender.responseText);
+				if(returned.state == 'idle')
+				{
+					sta.innerHTML = "<span style='color: blue;'>"+returned.state+"</span>";
+				}
+				else if(returned.state = 'recording')
+				{
+					sta.innerHTML = "<span style='color: green;'>"+"record"+"</span>";
+				}
+				else
+				{
+					sta.innerHTML = "<span style='color: white;'>"+returned.state+"</span>";
+				}
+				con.innerHTML = "Online"
+			}
+			
+			 // callback function, passing in the string we got back
+		}
+		
+
+	}
+	requestSender.send(null); //sending back the null parameters
+	
+}
+
+
+
+
+
+//this function will be able to check the update of the 
+function screenshotUpdate() { // some information I can only get if I ask for it, so that's what I do here
+		
+		img1.src = "http://10.19.2.101/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img2.src = "http://10.19.2.102/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img3.src = "http://10.19.2.103/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img4.src = "http://10.19.2.104/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img5.src = "http://10.19.2.105/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		
+		
+		img6.src = "http://10.19.2.111/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img7.src = "http://10.19.2.112/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img8.src = "http://10.19.2.113/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img9.src = "http://10.19.2.114/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img10.src = "http://10.19.2.115/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img11.src = "http://169.254.71.20/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		img12.src = "http://169.254.71.21/cgi-bin/screenCap?" + Math.random() ; // ask for an updated image
+		
+		dataGetter('get', 'http://10.19.2.101', 'state', 'connect1', 'status1');  //information for camera 1
+		dataGetter('get', 'http://10.19.2.102', 'state', 'connect2', 'status2');  //information for camera 2
+		dataGetter('get', 'http://10.19.2.103', 'state', 'connect3', 'status3');  //information for camera 3
+		dataGetter('get', 'http://10.19.2.104', 'state', 'connect4', 'status4');  //information for camera 4
+		dataGetter('get', 'http://10.19.2.105', 'state', 'connect5', 'status5');  //information for camera 5
+		
+		dataGetter('get', 'http://10.19.2.111', 'state', 'connect6', 'status6');  //information for camera 6
+		dataGetter('get', 'http://10.19.2.112', 'state', 'connect7', 'status7');  //information for camera 1
+		dataGetter('get', 'http://10.19.2.113', 'state', 'connect8', 'status8');  //information for camera 2
+		dataGetter('get', 'http://10.19.2.114', 'state', 'connect9', 'status9');  //information for camera 3
+		dataGetter('get', 'http://10.19.2.115', 'state', 'connect10', 'status10');  //information for camera 4
+		dataGetter('get', 'http://169.254.71.20', 'state', 'connect11', 'status11');  //information for camera 5
+		dataGetter('get', 'http://169.254.71.21', 'state', 'connect12', 'status12');  //information for camera 6
+		dataGetter('get', 'http://169.254.71.22', 'state', 'connect13', 'status13');  //information for camera 1
+		dataGetter('get', 'http://169.254.71.23', 'state', 'connect14', 'status14');  //information for camera 2
+		dataGetter('get', 'http://169.254.71.24', 'state', 'connect15', 'status15');  //information for camera 3
+		dataGetter('get', 'http://169.254.71.25', 'state', 'connect16', 'status16');  //information for camera 4
+		dataGetter('get', 'http://169.254.71.26', 'state', 'connect17', 'status17');  //information for camera 5
+		dataGetter('get', 'http://169.254.71.27', 'state', 'connect18', 'status18');  //information for camera 6
+		dataGetter('get', 'http://169.254.71.28', 'state', 'connect19', 'status19');  //information for camera 1
+		dataGetter('get', 'http://169.254.71.29', 'state', 'connect20', 'status20');  //information for camera 2
+		
+		
+		dataGetter('get', 'http://169.254.71.14', 'state', 'connect21', 'status21');  //information for camera 3
+		dataGetter('get', 'http://10.19.2.111', 'state', 'connect22', 'status22');  //information for camera 4
+		dataGetter('get', 'http://169.254.71.14', 'state', 'connect23', 'status23');  //information for camera 5
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect24', 'status24');  //information for camera 6
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect25', 'status25');  //information for camera 1
+		dataGetter('get', 'http://169.254.71.11', 'state', 'connect26', 'status26');  //information for camera 2
+		dataGetter('get', 'http://169.254.71.12', 'state', 'connect27', 'status27');  //information for camera 3
+		dataGetter('get', 'http://169.254.71.13', 'state', 'connect28', 'status28');  //information for camera 4
+		dataGetter('get', 'http://169.254.71.14', 'state', 'connect29', 'status29');  //information for camera 5
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect30', 'status30');  //information for camera 6
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect31', 'status31');  //information for camera 1
+		dataGetter('get', 'http://169.254.71.11', 'state', 'connect32', 'status32');  //information for camera 2
+		dataGetter('get', 'http://169.254.71.12', 'state', 'connect33', 'status33');  //information for camera 3
+		dataGetter('get', 'http://169.254.71.13', 'state', 'connect34', 'status34');  //information for camera 4
+		dataGetter('get', 'http://169.254.71.14', 'state', 'connect35', 'status35');  //information for camera 5
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect36', 'status36');  //information for camera 6
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect37', 'status37');  //information for camera 1
+		dataGetter('get', 'http://169.254.71.11', 'state', 'connect38', 'status38');  //information for camera 2
+		dataGetter('get', 'http://169.254.71.12', 'state', 'connect39', 'status39');  //information for camera 3
+		dataGetter('get', 'http://169.254.71.13', 'state', 'connect40', 'status40');  //information for camera 4
+		dataGetter('get', 'http://169.254.71.14', 'state', 'connect41', 'status41');  //information for camera 5
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect42', 'status42');  //information for camera 6
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect43', 'status43');  //information for camera 1
+		dataGetter('get', 'http://169.254.71.11', 'state', 'connect44', 'status44');  //information for camera 2
+		dataGetter('get', 'http://169.254.71.12', 'state', 'connect45', 'status45');  //information for camera 3
+		dataGetter('get', 'http://169.254.71.13', 'state', 'connect46', 'status46');  //information for camera 4
+		dataGetter('get', 'http://169.254.71.14', 'state', 'connect47', 'status47');  //information for camera 5
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect48', 'status48');  //information for camera 6
+		dataGetter('get', 'http://169.254.71.13', 'state', 'connect49', 'status49');  //information for camera 5
+		dataGetter('get', 'http://169.254.71.10', 'state', 'connect50', 'status50');  //information for camera 6
+		
+}
+
+var intervalID = setInterval(screenshotUpdate, 1000) ; // poll the cameras camera will be refreshed for ever
+
+</script>
+</html>
+
+
