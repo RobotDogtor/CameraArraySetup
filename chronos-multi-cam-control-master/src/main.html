@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8" />
+<title>Chronos Multi-Camera Network Controller</title>
+
+<link rel="stylesheet" href="css/fontFile.css"> 
+<link rel="styleSheet" href="css/sizeAndSpacing.css">
+
+<link id="themeSelection" rel="styleSheet" href="css/defaultTheme.css">
+<link id="windozeFixer" rel="styleSheet" href="">
+
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/multi_control.js"></script>
+<script>
+    window.onload = function() {
+        if (window.sessionStorage) {
+            if (window.sessionStorage.length > 0) {
+                var list = window.sessionStorage.getItem("ipList");
+                var input = window.sessionStorage.getItem("ipAddressArea");
+                
+                if (list != "" || list != null) {
+                    document.getElementById("ipList").innerHTML = list;
+                }
+                if (input != "" || input != null) {
+                    document.getElementById("ipAddressArea").innerHTML = input;
+                }
+            }
+            
+        }
+    }
+</script>
+
+<style>
+/******** Specific to this page ********/
+
+#record		{ width: 170px; padding: 22px 0; }
+
+#applyButton { float: right; }
+#applyButton.disabled { /* when the apply button is disabled */
+	box-shadow: 0 0 3px 3px #a00;
+	color: white;
+	background-color: #222;
+	text-decoration: line-through; /* cross out the apply button */
+}
+
+#saveVideoButton { float: right; }
+#saveVideoButton.disabled { /* when the save button is disabled */
+	background-color: #222;
+	text-decoration: line-through; /* cross out the save button */
+}
+
+#maxShutterButton { float: right; }
+
+#sensorBackground { margin-bottom: 5px; }
+
+#resolutionBox { clear: left; }
+
+#imageDisplay { line-height: 430px; }
+
+#fps { width: 105px; }
+
+#ipAddressArea {
+    width: 80%;
+    height: 100px;
+    border-radius: 10px;
+
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    border: 0px;
+
+    margin-left: 10px;
+    padding: 5px 0 0 5px;
+}
+
+.delButton {
+    background-color: #0067B9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: fit-content;
+    height: 25px;
+}
+.delButton:hover {
+    background-color: #3D87CB;
+}
+
+.disabled {
+    color: white;
+    background-color: #222;
+    text-decoration: line-through;
+}
+
+@media screen and (min-width: 1737px) {
+	.rightContainer { max-width: 900px; }
+}
+
+@media screen and (max-width: 1737px) { /* change formatting when screen size is narrower than this */
+	.rightContainer { max-width: 750px; }
+}
+
+@media screen and (max-width: 1586px) { /* change formatting when screen size is narrower than this */
+	.rightContainer { max-width: 535px; }
+}
+
+@media screen and (max-width: 1375px) { /* change formatting when screen size is narrower than this */
+	.rightContainer { max-width: 303px; }
+}
+
+@media screen and (max-width: 1140px) { /* change formatting when screen size is narrower than this */
+	.rightContainer, .leftContainer, .videoDisplay { max-width: 100%; }
+	.leftContainer { margin: 0; }
+	.Text-bar { margin: 4px 0 2px 0; }
+}
+
+@media screen and (max-width: 1142px) { /* change formatting when screen size is narrower than this */
+	#main { display: none; } /* hide the main button */
+
+}
+
+@media screen and (max-width: 940px) { /* change formatting when screen size is narrower than this */
+	body { margin: 0; }
+}
+
+@media screen and (max-width: 715px) { /* change formatting when screen size is narrower than this */
+	.subTitle { display: none; }
+}
+
+@media screen and (max-width: 743px) {
+	#saveAsBox { clear: left; }
+}
+
+@media screen and (max-width: 542px) { /* change formatting when screen size is narrower than this */
+	#settings { display: none; } /* hide the playSave button */
+
+	#saveProgress { bottom: 25%; left: 2%}
+	#videoStateOverlay { bottom: 110%}
+}
+
+@media screen and (max-width: 455px) { /* change formatting when screen size is narrower than this */
+	.titleImage img { width: 100%; height: auto; }
+}
+
+@media screen and (max-width: 365px) { /* change formatting when screen size is narrower than this */
+	#playSave { display: none; } /* hide the settings button */
+}
+</style>
+
+</head>
+
+
+<body onclick="">
+    <div class="header">
+        <div class="titleImage">
+            <img id="logoImage" src="images/Chronos High Speed logo.png">
+        </div>
+        <div class="subTitle">
+            by <a href="https://www.krontech.ca" target="_blank">Kron Technologies</a>
+        </div>
+    </div>
+
+    <div class="mainContainer">
+
+        <div class="heading-bar">
+            <a  id="main" class="active"> <div class="homeIcon"></div> Main </a>
+        </div>
+
+        <div class="leftContainer">
+            <div id="videoDisplay" class="videoDisplay">
+                <img id="imageDisplay" alt="Screenshot Display">
+                <div id="crossHairs" class="overlay hidden"></div>
+                <div id="saveProgress" class="progressBar hidden">
+                    <div id="videoStateOverlay" class="stateNotice">Saving Video</div>
+				    <div id="saveProgressFill" class="progressBarFill"></div>
+				    Progress
+                </div> 
+            </div>
+
+            <div class="Text-bar">
+                <!--<a id="rebootBtn" class=""> Reboot </a>-->
+                <a id="record" onclick="recordControl(this)"><div class="recordCircle"></div>Record</a>
+            </div>
+            <div id="ipBox" class="Text-bar">
+                <b>Camera IP Addresses</b>
+
+                <textarea id="ipAddressArea" placeholder="Please input all IP addresses of cameras that you want to control. i.e. 123.45.67.89. Separate by , or -."></textarea>
+
+                <div id="ipButton" style="padding-bottom: 70px;">
+                    <a id="ipConfirmButton" class="button" onclick="getIpAddress()"> Confirm </a>
+                    <a id="ipClearButton" class="button" onclick="clearIpAddress()"> Clear </a>
+                </div>
+
+                <div id="ipList"></div>
+            </div>
+        </div>
+
+        <div class="rightContainer">
+            <div id="exposureBox" class="horizLayout">
+                <b> Exposure (Shutter) </b>
+                <input class="slider" type="range" id="shutter" oninput="holdWhileSliding(this)"/>
+                <br>
+                <input type="number" id="exposureDegrees" min="0.0" max="360.0" step="0.1" oninput="setExposure(this)"> &deg;
+                &ensp;
+                <input type="number" id="exposurePercent" min="0.0" max="100.0" step="0.1" oninput="setExposure(this)"> %
+                &ensp;
+                <input type="number" id="exposureTime" min="0" step="0.01" oninput="setExposure(this)"> µs
+                <a id="maxShutterButton" class="button" onclick="maxShutter()"> MAX </a>
+            </div>
+            
+
+            <div id="resolutionBox" class="horizLayout">
+                <b> Resolution </b>
+                <br>
+                <input type="number" id="hRes" oninput="checkResValidity()"/> x <input type="number" id="vRes" oninput="checkResValidity()"/>
+                <div class="selectContainerHolder" onclick="">Presets<div id="resolution" class="selectContainer">
+                    <a> Unset (Please check camera connection) </a>
+                </div></div>
+                <br>
+                <b> Frame Rate </b>
+                <br>
+                <input type="number" id="fps" min="60" step="0.01"/> FPS
+                <a id="maxFRButton" class="button" onclick="getMaxFrameRate()"> MAX </a>
+                <a id="applyButton" class="button" onclick="applyResolution()"> Apply </a>
+            </div>
+
+            <div id="videoSettingsBox" class="horizLayout">
+                <b> Video Encoder Settings </b>
+                <br>
+                Video framerate:
+                <input type="number" id="saveFPSNum" min="1" max="60" step="1" value="60" onChange="boundInput(this)"> fps
+                <br>
+                Bits per pixel:
+                <input type="number" id="bitsPerPixelNum" min="0.25" step="0.05" max="2.0" value="0.70" onChange="boundInput(this)">
+                <br>
+                Max Bitrate:
+                <input type="number" id="maxBitRateNum" min="1" max="60" step="1" value="40" onChange="boundInput(this)"> Mbps
+            </div>
+
+            <div id="smbStorageBox" class="horizLayout">
+                <b> Windows/SMB Net. Storage </b>
+                <br>
+                Address: <input id="smbAddress" type="text" placeholder="123.45.67.89"/>
+                <br>
+                Mount:&emsp;<input id="smbMount" type="text" placeholder="shareFolder"/>
+                <br>
+                Username:&puncsp;<input id="smbUName" type="text" placeholder="squidFace"/>
+                <br>
+                <a id="smbPassShowHide" class="button" style="margin-left: 0;" onclick="passShowHide()">Password:</a>
+                <input id="smbPass" type="password" placeholder="******"/>
+                <br>
+                <span class="instruction">Warning: this info is not encrypted!</span>
+                <br>
+                <a id="smbUnmountBtn" class="button" onclick="networkSaving(this)">Unmount</a>
+                <a id="smbTestBtn" class="button" onclick="networkSaving(this)">Test</a>
+                <a id="smbApplyBtn" class="button" style="float: right;" onclick="networkSaving(this)">Apply</a>
+            </div>
+          
+            <div id="nfsStorageBox" class="horizLayout">
+                <b> Linux/NFS Network Storage </b>
+                <br>
+                Address: <input id="nfsAddress" type="text" placeholder="123.45.67.89">
+                <br>
+                Mount:&emsp;<input id="nfsMount" type="text" placeholder="drives/share">
+                <br>
+                <a id="nfsUnmountBtn" class="button" onclick="networkSaving(this)">Unmount</a>
+                <a id="nfsTestBtn" class="button" onclick="networkSaving(this)">Test</a>
+                <a id="nfsApplyBtn" class="button" style="float: right;" onclick="networkSaving(this)">Apply</a>
+            </div>
+
+            <div id="saveAsBox" class="horizLayout">
+                <b> Save Video </b>
+                <br>
+                <div id="storageLocation" class="selectContainerHolder" onclick="">Location<div id="storageLocationInner" class="selectContainer">
+                    <a onclick="dropDownSelect(this)"> No Storage Connected </a>
+                    <a onclick="externalStorage()">Refresh</a>
+                </div></div>
+                <br>
+                <input type="text" id="fileName" placeholder="File Name">
+                <br>
+                <span class="instruction">Leave empty to use autoname</span>
+                <br>
+                <br>
+                <div id="saveFormat" class="selectContainerHolder" onclick=""> File Format<div id="saveFormatInner" class="selectContainer">
+                    <a id="h264" onclick="dropDownSelect(this)">H.264 (mp4)</a>
+                    <a id="cinemaDNG" onclick="dropDownSelect(this)">CinemaDNG (raw)</a>
+                    <a id="tiff" onclick="dropDownSelect(this)">TIFF (images)</a>
+                    <a id="tiffRaw" onclick="dropDownSelect(this)">TIFF RAW (images)</a>
+                </div></div>
+                <a id="saveVideoButton" class="button disabled" onclick="saveWholeVideo()"> Save </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="popUpBackground" class="popUpBackground hidden">
+        <div id="messageWarn" class="popUpMessage">
+            <div id="ipNotInputBox" class="horizLayout hidden">
+                <br>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">Ok</a>
+            </div>
+
+            <div id="overwrittenBox" class="horizLayout hidden">
+                You have not saved any of the previous recording. Do you want to erase it and start a new recording?
+                <br>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">No (don't record)</a>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">Yes (overwrite)</a>
+            </div>
+
+            <div id="resNotAppliedBox" class="horizLayout hidden">
+                The resolution & framerate settings were changed, but they were not applied. Do you want to use the new settings?
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">Yes (apply the changed settings)</a>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">No (revert to previous settings)</a>
+            </div>
+
+            <div id="errorWhileSavingBox" class="horizLayout hidden">
+                Cannont save the file
+                <br>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">Ok</a>
+            </div>
+
+            <div id="noRecordSegmentModeBox" class="horizLayout hidden">
+                The webpage cannot start a recording in "Segmented" mode.
+                <br>
+                You can change recording mode on the <a href="\settings.html">settings</a> page.
+                <br>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">Ok</a>
+            </div>
+
+            <div id="cantApplyResBox" class="horizLayout hidden">
+                Cannot apply resolution / framerate settings.
+                <br>
+                One or more settings are outside the acceptable bounds.
+                <br>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">Ok</a>
+            </div>
+
+            <div id="netShareResultBox" class="horizLayout hidden">
+                Status of the network share requests
+                <br>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">Ok</a>
+            </div>
+
+            <div id="somethingWeirdBox" class="horizLayout hidden">
+                Something weird is happening
+            </div>
+
+            <div id="videoSavingBox" class="horizLayout hidden">
+                Wait for Saving to start...
+                <br>
+                <a style="float: right;" class="button" onclick="dropDownSelect(this)">Ok</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
