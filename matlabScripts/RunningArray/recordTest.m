@@ -9,9 +9,9 @@ AnonFunLibrary
 
 leaderURL = '10.19.2.102';
 
-pause(5)
+pause(10)
 runMethodOnURLs({leaderURL},startRecording);
-pause(1)
+pause(2)
 runMethodOnURLs({leaderURL},stopRecording);
-pause(6)
-runSaveMethodOnURLs(URLs);
+pause(20)
+% runSaveMethodOnURLs(URLs);
