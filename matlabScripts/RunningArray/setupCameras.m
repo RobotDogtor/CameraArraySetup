@@ -7,6 +7,7 @@ AnonFunLibrary
 
 runMethodOnURLs(URLs,stopRecording);
 runMethodOnURLs(URLs,setFrameRate);
+runMethodOnURLs(URLs,setOverlayEnable);
 
 for i = 1:length(inputSettingFunctionsFollower)
     runMethodOnURLs(URLs,inputSettingFunctionsFollower{i});
