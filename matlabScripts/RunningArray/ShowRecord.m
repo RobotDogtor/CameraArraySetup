@@ -2,8 +2,19 @@ clear
 clc
 close all
 
+%% open a video writer to save the output
+recordVideo = true;
+
+if recordVideo
+    currDateTime = char(datetime('now'));
+    currDateTime = strrep(currDateTime,' ','_');
+    currDateTime = strrep(currDateTime,':','-');
+    v = VideoWriter(['C:\Users\User\Desktop\outputFiles\OutputVideo' currDateTime '.avi']);
+    open(v);
+end
+
 %% play the four ring cameras together
-[URLs] = getAllCameraURLs();
+URLs = getAllCameraURLs();
 
 numCameras = length(URLs);
 vidObjectList = {};
@@ -26,8 +37,15 @@ while hasFrame(vidObjectList{1})
     if mod(num,4) == 0
         half = length(frame(1,:))/2;
         imshow([frame(:,1:half); frame(:,half+1:end)])
+        if recordVideo
+            writeVideo(v,frame)
+        end
         pause(1/vidObjectList{1}.FrameRate);
     end
+end
+
+if recordVideo
+    close(v);
 end
 
 %% functions
@@ -36,3 +54,4 @@ function fileName = grabLastFileFromCamera(cameraName)
     x = dir(['\\10.19.2.139\Public\' cameraName]);
     fileName = [x(end).folder '\' x(end).name];
 end
+

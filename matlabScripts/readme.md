@@ -39,3 +39,8 @@ And for the Leader Cameras set:
 Each camera can be interfaced with through a webAPI provided by Chronos. Documentation for this API ships with each camera and can be accessed at `http://CameraIP/apidoc/`. 
 
 
+RunningArray and Libraries folders are the ones that are important. 
+
+If you tell a camera to save while it is still recording or too soon after you stop, it will stall or freeze or crash. Sometimes if it still responding but wont stop recording then run the `trueStopFollower` Function on a camera url. If that doesn't work, or its frozen on another screen, or the screen is just black, run the `rebootCamera` function with the camera number.
+
+When grabbing files from the server. Make sure the drive is mapped and signed in to in order for it to work. 

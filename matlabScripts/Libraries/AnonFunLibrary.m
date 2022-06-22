@@ -7,7 +7,7 @@
 startRecording = @(url) urlread(['http://' url '/control/startRecording']);
 stopRecording = @(url) urlread(['http://' url '/control/stopRecording']);
 stopSaving = @(url) webwrite(['http://' url '/control/stopFilesave']);
-saveToSmbDefaultName = @(url) webwrite(['http://' url '/control/startFilesave'],'format','h264','device','smb');
+saveToSmbDefaultName = @(url) webwrite(['http://' url '/control/startFilesave'],'format','h264','device','smb'); % deprecated
 
 setFrameRate = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
 setOverlayEnable = @(url) webwrite(['http://' url '/control/p'],'overlayEnable',true);
