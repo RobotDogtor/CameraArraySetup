@@ -1,6 +1,6 @@
-clear
-clc
-close all
+% clear
+% clc
+% close all
 
 %% open a video writer to save the output
 recordVideo = true;
@@ -19,6 +19,7 @@ URLs = getAllCameraURLs();
 numCameras = length(URLs);
 vidObjectList = {};
 for i = 1:numCameras
+    disp(i)
     fileName{i} = grabLastFileFromCamera(['camera' URLs{i}(end-1:end)]);
     vidObjectList{i} = VideoReader(fileName{i});
 %     vidObjectList{i}.CurrentTime = vidObjectList{i}.Duration*3/4;
