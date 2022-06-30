@@ -1,0 +1,53 @@
+$Id: changes.txt,v 2.0 2003/06/19 12:06:47 svoboda Exp $
+
+List of changes against to the last release:
+
+Fixed Bugs in Code:
+
+- configdata ... handling of missing config files
+
+
+Functionality or Fixed bugs in it :
+
+- You can now basially set all you need in the configdata. A
+  modification of gocal or im2points is not needed anymore. Unless you
+  really know what you are doing
+
+- The algorithm first tries to load data from the mono-processor
+  version of LED finding. If not succeed it tries to load the
+  multiproc data. This default behavior might be supressed if needed
+  by setting USED_MULTIPROC = 1; in the gocal.m. However, the default
+  behavior should be OK in most of the cases.
+
+- algorithms handles images with different resolutions correctly
+
+- NUM_CAMS_FILL (in gocal) ... now compared with the number of
+  available cameras and decreased if necessary
+
+- required sub-pixel accuracy. You can set the required scale of the
+  subpixel precision in the configdata.m in config.imgs.subpix.
+  If not specified, default 1/3 is assigned. You can do some quick
+  try-and-see tests by setting this value to 1. 
+
+- speed up of the Finding LEDs. However, only for smaller LEDs up to
+  7-9 pixels in diameter. For the bigger neighbourhoods and the higher
+  sub-pixel precision required, like oscar (big LED), the older
+  version might be faster. Check the variable BLK_PROC in getpoint.m
+
+- the graphical outputs (if required) from getpoint.m made more clear
+
+- support for selfcalibration of systems consisting of cameras and
+  projectors added. See the "oscar" experiment. Only single processor
+  version im2points.m works properly for this.
+
+
+
+Balancing speed and precision:
+
+The Matlab function "imread" for reading the images
+is appearently not one of the fastest. It does not make sense to go
+beyond subpixel=1/2 for LEDs <= 7 pixels. The most of the time is
+spent in reading images anyway.
+
+However, for big LEDs >13, it may save a lot of time to set the value
+to 1 or 1/2 against 1/3 or 1/4.
