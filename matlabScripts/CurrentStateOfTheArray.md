@@ -4,9 +4,9 @@ Parts: Cameras, Lights, Ethernet Cables, BNC cables, Power Canvas.
 ### Cameras
 All the cameras are mounted except for camera 95, because we need the large bolts to mount it properly and it's ethernet port doesn't work.
 
-Cameras 92, 93, and 95 are the color cameras.
+Cameras 92, 93, and 94 are the color cameras.
 
-**TODO:** to adjust the angles of all the 1,2,3,and 4 cameras to focus on the center of the ring. 
+**TODO:** to adjust the angles of all the 1,2,3,and 4 cameras to focus on the center of the ring. Set aperture size and focus.
 
 ### Lights
 All the lights are mounted and just need ethernet cord connections.

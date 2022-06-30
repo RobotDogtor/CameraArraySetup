@@ -51,7 +51,7 @@ while(1)
             xpos = 10;
             ypos = ypos-1;
         end
-        disp([xpos ypos])
+%         disp([xpos ypos])
 
         xrange = (xpos-1)*xdimSize*sc+1:xpos*xdimSize*sc;
         yrange = (ypos-1)*ydimSize*sc+1:ypos*ydimSize*sc;
