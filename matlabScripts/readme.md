@@ -46,3 +46,14 @@ If you tell a camera to save while it is still recording or too soon after you s
 When grabbing files from the server. Make sure the drive is mapped and signed in to in order for it to work. 
 
 Function flow: run `setupCameras` to set the IO 
+
+
+## Calibration steps
+
+ - finish camera holes
+ - black calibrate
+ - make sure all cameras are focused and at correct aperture
+ - Code to calibrate (svoboda)
+ - code to auto upload videos to google drive
+ - visual hull code
+ - code for mesh and position of bat

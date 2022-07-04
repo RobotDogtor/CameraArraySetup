@@ -13,7 +13,7 @@ if recordVideo
     open(v);
 end
 
-%% play the four ring cameras together
+%% load all the videos
 URLs = getAllCameraURLs();
 
 numCameras = length(URLs);
@@ -34,15 +34,28 @@ while hasFrame(vidObjectList{1})
     frame = [];
     for i = 1:numCameras
         thisFrame = rgb2gray(readFrame(vidObjectList{i}));
+        %flip twice if 4 or 5
+        if mod(i,5) == 4 || mod(i,5) == 0
+            thisFrame = flip(thisFrame);
+        end
         frame = [frame thisFrame(1:4:end,1:4:end)];
     end
-    if mod(num,4) == 0
+    emptyFrame = thisFrame*0;
+    for i = numCameras+1:50
+        frame = [frame emptyFrame(1:4:end,1:4:end)];
+    end
+    if mod(num,5) == 0
         half = length(frame(1,:))/2;
         threeTenths = length(frame(1,:))*3/10;
         oneTenth = length(frame(1,:))*1/10;
+        oneFifth = length(frame(1,:))*1/5;
 %         imshow([frame(:,1:half); frame(:,half+1:end)])
-        subframe = [frame(:,1:threeTenths); frame(:,threeTenths+1:2*threeTenths); ...
-            frame(:,2*threeTenths+1:3*threeTenths); frame(:,3*threeTenths+1:end) frame(:,1:oneTenth*2)*0];
+%         subframe = [frame(:,1:threeTenths); frame(:,threeTenths+1:2*threeTenths); ...
+%             frame(:,2*threeTenths+1:3*threeTenths); frame(:,3*threeTenths+1:end) frame(:,1:oneTenth*2)*0];
+        subframe = [frame(:,1:oneTenth); frame(:,oneTenth+1:2*oneTenth); ...
+            frame(:,2*oneTenth+1:3*oneTenth); frame(:,3*oneTenth+1:4*oneTenth); frame(:,4*oneTenth+1:5*oneTenth); ...
+            frame(:,5*oneTenth+1:6*oneTenth); frame(:,6*oneTenth+1:7*oneTenth); frame(:,7*oneTenth+1:8*oneTenth); ...
+            frame(:,8*oneTenth+1:9*oneTenth); frame(:,10*oneTenth+1:10*oneTenth)];
         imshow(subframe);
         if recordVideo
             writeVideo(v,subframe)
