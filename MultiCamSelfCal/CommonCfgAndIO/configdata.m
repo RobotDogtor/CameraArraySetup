@@ -255,12 +255,12 @@ elseif strcmp(experiment,'calibration_trajectory_2')
   config.cal.MIN_PTS_VAL = 30;
   config.cal.NTUPLES	= 3;
 elseif strcmp(experiment,'calibration_trajectory_2_double')
-  config.paths.data		= ['G:/PhDProject/20_cameras/'];
+  config.paths.data		= ['C:/repos/MultiCamSelfCalData/TestData/'];
   config.files.basename = 'camera';
   config.files.imgext	= 'jpg';
   config.paths.img      = [config.paths.data,config.files.basename,'%d/'];
   config.files.imnames	= [config.files.basename,'%d*.'];
-  config.files.idxcams	= [0,1,2, 3,4,5,6, 7, 8,9];
+  config.files.idxcams	= [1,2,3,4];
   config.imgs.LEDsize	= 5; % avg diameter of a LED in pixels  
   config.imgs.LEDcolor	= 'grayscale'; % color of the laser pointer
   config.imgs.subpix	= 1/2;
@@ -271,12 +271,14 @@ elseif strcmp(experiment,'calibration_trajectory_2_double')
   config.cal.GLOBAL_ITER_THR = 1;
   config.cal.GLOBAL_ITER_MAX = 1;
   config.cal.INL_TOL	= 1; %if UNDO_RADIAL than it may be relatively small <1 
-  config.cal.NUM_CAMS_FILL = 10;
+  config.cal.NUM_CAMS_FILL = 4;
   config.cal.START_BA = 1;
   config.cal.DO_BA		=0;
   config.cal.UNDO_RADIAL= 0; %CalTech (BlueC compatible)
   config.cal.MIN_PTS_VAL = 20;
   config.cal.NTUPLES	= 3;
+
+  
 elseif strcmp(experiment,'calibration_rearranged_camera_position')
   config.paths.data		= ['G:/PhDProject/rearrange_camera_pose/'];
   config.files.basename = 'camera';

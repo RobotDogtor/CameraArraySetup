@@ -33,7 +33,11 @@ if ~USED_MULTIPROC
 	%%%
 	% try load the file with Images resolutions which is on of the output files
 	% from finding LEDs procedure or take the pre-defined resolutions specified in the configdata
-	try, Res = load(config.files.Res); catch  Res   = repmat(config.imgs.res,size(IdMat,1),1); end
+	try, 
+        Res = load(config.files.Res); 
+    catch  
+        Res   = repmat(config.imgs.res,size(IdMat,1),1); 
+    end
   catch
     warning('Data from mono-processor version not found, trying the multi-proc ones ...') 
    

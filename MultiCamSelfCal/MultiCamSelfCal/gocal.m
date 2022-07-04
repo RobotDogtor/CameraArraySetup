@@ -8,6 +8,8 @@
 % $State: Exp $
 
 clear all
+clc
+close all
 
 % add necessary paths
 addpath ../CommonCfgAndIO
