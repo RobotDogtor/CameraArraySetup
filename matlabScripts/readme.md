@@ -57,3 +57,30 @@ Function flow: run `setupCameras` to set the IO
  - code to auto upload videos to google drive
  - visual hull code
  - code for mesh and position of bat
+
+
+Process: there is a contradiction in the setting of the camera parameters. Two variables: Aperture size and focus distance, both physically set on the lens of the camera. Aperture Size controls how much light the camera takes in. The lower the aperture the darker the picture, but also the wider the depth of the focus. The Focus adjustment controls how far from the camera the center of focus is. The depth of focus is the distance on either side of the center of focus that is still in focus. 
+
+So the goal is to find the maximum aperture that can still focus on the entire space of the array. Ie. any space >20cm from the wall of the array should be in focus in each camera. 
+
+For this we start with two settings, one is a low light setting and one is a high light setting. 
+
+ 1. The low light setting is a larger aperture with less light such that the picture is washed out and there is better contrast btwn the object and the background, but worse depth of focus.
+ 2. The high light setting is smaller aperture so a darker picture that needs more light to give contrast, but has a better depth of focus. 
+
+
+### Low Light Process
+
+Using Camera 103. Lights set at 40%
+Aperture is set to white dot above the 4, this gives the required depth of field with having the widest aperture (most light into lens).
+
+Analog gain at 6 and digital at 6dB, this give a good contrast without too much noise.
+MAX exposure time for brightest light.
+
+Go around to each camera and set the aperture to that and then adjust focus to be correct, then black calibrate. 
+
+Put diffusers in.
+
+## Cameras Now
+
+Go through ring by ring and communicate and set settings
