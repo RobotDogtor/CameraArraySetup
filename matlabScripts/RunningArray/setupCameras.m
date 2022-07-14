@@ -9,6 +9,7 @@ URLs = getAllCameraURLs();
 %set up the anonymous function library
 AnonFunLibrary
 
+%%
 %just stop the cameras from recording if the are already
 runMethodOnURLs(URLs,stopRecording);
 %set the frame rate to 1000 fps (Takes a longer time)
@@ -24,6 +25,10 @@ for i = 1:length(inputSettingFunctionsFollower)
     runMethodOnURLs(URLs,inputSettingFunctionsFollower{i});
     disp(['set setting ' num2str(i) '/' num2str(length(inputSettingFunctionsFollower))]);
 end
+
+%%
+runMethodOnURLs(URLs,setDigitalGainTo6Db);
+runMethodOnURLs(URLs,setAnalogGainTo0Db);
 
 %TODO: run the function to set up the leader camera
 setupCameraAsLeader(leaderURL);
