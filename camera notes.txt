@@ -23,9 +23,7 @@ make sure we're not in an always starting recording mode, otherwise stopping won
 QNAP:
 admin
 1234batlab!
-10.19.2.139
-
-pushd \\10.19.2.139\Public
+10.19.2.139s
 
 
 
