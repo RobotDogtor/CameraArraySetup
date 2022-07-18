@@ -26,9 +26,11 @@ USED_MULTIPROC = 0;		% was the multipropcessing used?
 % read the data structures
 if ~USED_MULTIPROC
   try,
-	Ws	   = load(config.files.points);	% distorted points as found by Im2Points
+% 	Ws	   = load(config.files.points);	% distorted points as found by Im2Points
+	load(config.files.points);	% distorted points as found by Im2Points
 
-	IdMat  = load(config.files.IdMat);	% see function im2points for detailed comments	
+% 	IdMat  = load(config.files.IdMat);	% see function im2points for detailed comments	
+	load(config.files.IdMat);	% see function im2points for detailed comments	
     
 	%%%
 	% try load the file with Images resolutions which is on of the output files

@@ -343,6 +343,31 @@ elseif strcmp(experiment,'new_toy')
   config.cal.UNDO_RADIAL= 0; % CalTech (BlueC compatible)
   config.cal.MIN_PTS_VAL = 20;
   config.cal.NTUPLES	= 3;
+  
+elseif strcmp(experiment,'ArrayCams')
+  config.paths.data		= ['C:/repos/CameraArraySetup/matlabScripts/TestData/'];
+  config.files.basename = 'camera';
+  config.files.imgext	= 'jpg';
+  config.paths.img      = [config.paths.data,config.files.basename,'%d/'];
+  config.files.imnames	= [config.files.basename,'%d*.'];
+  config.files.idxcams	= [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+  config.imgs.LEDsize	= 5; % avg diameter of a LED in pixels  
+  config.imgs.LEDcolor	= 'grayscale'; % color of the laser pointer
+  config.imgs.subpix	= 1/2;
+
+  config.cal.nonlinpar	= [1,0,1,0,0,0];
+  config.cal.NL_UPDATE	= [1,0,1,0,0,0];
+  config.cal.DO_GLOBAL_ITER = 1;
+  config.cal.GLOBAL_ITER_THR = 1;
+  config.cal.GLOBAL_ITER_MAX = 1;
+  config.cal.INL_TOL	= 1; %if UNDO_RADIAL than it may be relatively small <1 
+  config.cal.NUM_CAMS_FILL = 20;
+  config.cal.START_BA = 1;
+  config.cal.DO_BA		=0;
+  config.cal.UNDO_RADIAL= 0; %CalTech (BlueC compatible)
+  config.cal.MIN_PTS_VAL = 20;
+  config.cal.NTUPLES	= 3;
+  
 else
   error('Configdata: wrong identifier of the data set');
 end
@@ -391,10 +416,10 @@ try config.imgs.subpix; catch, config.imgs.subpix = 1/3; end;
 
 % data names
 try config.files.Pmats;      catch, config.files.Pmats	    = [config.paths.data,'Pmatrices.dat'];		end;
-try config.files.points;	 catch, config.files.points		= [config.paths.data,'points.dat'];		end;
+try config.files.points;	 catch, config.files.points		= [config.paths.data,'points'];		end;
 try config.files.IdPoints;	 catch,	config.files.IdPoints	= [config.paths.data,'IdPoints.dat'];		end;
-try config.files.Res;		 catch,	config.files.Res		= [config.paths.data,'Res.dat'];		end;
-try config.files.IdMat;		 catch, config.files.IdMat		= [config.paths.data,'IdMat.dat'];			end;
+try config.files.Res;		 catch,	config.files.Res		= [config.paths.data,'Res'];		end;
+try config.files.IdMat;		 catch, config.files.IdMat		= [config.paths.data,'IdMat'];			end;
 try config.files.inidx;		 catch, config.files.inidx		= [config.paths.data,'idxin.dat'];			end;
 try config.files.avIM;		 catch, config.files.avIM		= [config.paths.data,'camera%d.average.tiff'];		end;
 try config.files.stdIM;		 catch, config.files.stdIM		= [config.paths.data,'camera%d.std.tiff'];		end;
