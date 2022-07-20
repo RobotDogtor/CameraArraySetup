@@ -25,12 +25,24 @@ for i = 1:numPoints
 end
 
 for i = 1:numPoints
-    goodPoints(i) = sum(IdMat(:,i)) == 5 || sum(IdMat(:,i)) == 6;
+    goodPoints(i) = sum(IdMat(:,i)) == 5 || sum(IdMat(:,i)) == 6 || sum(IdMat(:,i)) == 7;
 end
+
+%%
+j = 18;
+plot(Cameras(j).CameraXpoints,Cameras(j).CameraYpoints,'ro')
+axis([0 1 0 1])
+
+%%
 % goodPoints = (sum(IdMat) == 5) + (sum(IdMat) == 6);% + (sum(IdMat) == 7) + (sum(IdMat) == 4);
 Ws = Ws(:,goodPoints);
 IdMat = IdMat(:,goodPoints);
 
-save('CameraPointsWS.mat','Ws')
-save('points','Ws')
-save('IdMat','IdMat')
+%% Check all Cameras have points, chack each pair has 8 points
+sum(~isnan(Ws(54,:)))
+
+
+%%
+save('TestData/CameraPointsWS.mat','Ws')
+save('TestData/points','Ws')
+save('TestData/IdMat','IdMat')

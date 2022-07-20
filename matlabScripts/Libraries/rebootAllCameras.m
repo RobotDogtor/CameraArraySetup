@@ -1,5 +1,5 @@
 function rebootAllCameras()
-    for r = 1:9
+    for r = 0:9
         for c = 1:5
             try
                 rebootCamera(r*10+c);

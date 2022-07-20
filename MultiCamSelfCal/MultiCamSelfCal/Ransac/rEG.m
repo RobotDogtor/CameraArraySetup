@@ -27,15 +27,29 @@ max_sam = MAX_SAM;
 no_sam = 0;
 no_mod = 0;
  
+% Seems like this is taking random samples of 7 points between the shared
+% frames of the two cameras here and computing the epipolar plane for those
+% sameple. It keeps going until it reaches a concensus plane between
+% samples, identifying outliers.
+goodCheck = 0;
 while no_sam < max_sam 
   for pos = 1:7
       idx = pos + ceil(rand * (len-pos));
       ptr([pos, idx]) = ptr([idx, pos]);
   end;
   
-  no_sam = no_sam +1;
  
   aFs = fu2F7(u(:,ptr(1:7))); 
+  
+  
+  if size(aFs)<1
+      check = 85763;
+      continue;
+  else
+      coodCheck = goodCheck+1;
+  end
+  
+  no_sam = no_sam +1;
   
   for i = 1:size(aFs,3)
       no_mod = no_mod +1;

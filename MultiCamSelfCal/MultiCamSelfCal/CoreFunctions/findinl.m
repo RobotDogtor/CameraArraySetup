@@ -49,7 +49,7 @@ while (sum([not_used.pts])>1-NoCams),
   Wspair   = Ws(id.cam_max*3-2:id.cam_max*3, idx.corr_to_pair);
   Wspair   = [Wspair; Ws(id.cam_to_pair*3-2:id.cam_to_pair*3, idx.corr_to_pair)];
 
-  
+  disp(['in findin1, id.cam_max: ' num2str(id.cam_max) '   id.cam_to_pair: ' num2str(id.cam_to_pair)])
   [F, inls] = rEG(Wspair,tol,tol,0.99); %tol
   IdMatIn(id.cam_max, idx.corr_to_pair(inls)) = 1;
   IdMat(id.cam_max, :)						  = 0;
