@@ -14,6 +14,7 @@ setAnalogGainTo0Db = @(url) webwrite(['http://' url '/control/p'],'analogGain','
 setFrameRate = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
 setOverlayEnable = @(url) webwrite(['http://' url '/control/p'],'overlayEnable',true);
 
+startBlackCalibration = @(url) webwrite(['http://' url '/control/startCalibration'],'blackCal',true);
 
 %% IO Settings 
 options = weboptions('HeaderFields',{'Content-Type' 'application/json'});

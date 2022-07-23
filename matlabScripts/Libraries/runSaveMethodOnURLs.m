@@ -4,7 +4,11 @@ function runSaveMethodOnURLs(URLs)
     currDateTime = strrep(currDateTime,' ','_');
     currDateTime = strrep(currDateTime,':','-');
     for i = 1:length(URLs) 
-       webwrite(['http://' URLs{i} '/control/startFilesave'],'format','h264','device','smb','filename',['Video_' currDateTime]);    
+        try
+            webwrite(['http://' URLs{i} '/control/startFilesave'],'format','h264','device','smb','filename',['Video_' currDateTime]);  
+        catch
+            disp(['Saving All Cameras: camera ' URLs{i} ' could did not start saving.'])
+        end
     end
     % response = webwrite(cameraURL,'format','h264','device','smb','start',0,'length',500);
 end

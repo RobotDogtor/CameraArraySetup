@@ -12,14 +12,16 @@ recordVideo = false;
 %% First Camera
 URLs = getAllCameraURLs();
 numCameras = length(URLs);
-
-recordVideoFromRing(0);
-recordVideoFromRing(1);
-recordVideoFromRing(2);
-recordVideoFromRing(3);
-% recordVideoFromRing(4);
-% recordVideoFromRing(5);
-recordCompiledVideoFromRings([0,1,2,3]);
+ringNums = [3];
+file = 'Video_23-Jul-2022_14-38-14';
+for ringNum = ringNums
+%     try
+        recordVideoFromRing(ringNum,file);
+%     catch
+%         disp(['ring ' num2str(ringNum) ' has an error and did not save right']);
+%     end
+end
+recordCompiledVideoFromRings([0,1,2,3,4,5,6,7,8],file);
 
 %%
 function cameraName = getCameraName(cameraNumber)
@@ -36,19 +38,24 @@ function fileName = grabLastFileFromCamera(cameraName)
     fileName = [x(end).folder '\' x(end).name];
 end
 
-function fileName = grabThisFileFromCamera(cameraName)
-    file = 'Video_14-Jul-2022_15-14-22.mp4';
-    fileName = ['\\10.19.2.139\Public\' cameraName '\' file]
+function fileName = grabThisFileFromCamera(cameraName,file)
+    fileName = ['\\10.19.2.139\Public\' cameraName '\' file '.mp4']
 end
 
-function recordVideoFromRing(ringNum)
+function recordVideoFromRing(ringNum,file)
     oneToFive = [1 2 3 4 5];
     vidObjectList = {};
-    for i = 1:5
+    count = 0;
+    problemCams = [92 93 95 34];
+    for i = oneToFive
         num = ringNum*10+i;
-        vidObjectList{i} = VideoReader(grabThisFileFromCamera(getCameraName(num)));
+        if sum(num == problemCams)>0
+            continue;
+        end
+        count = count+1;
+        vidObjectList{count} = VideoReader(grabThisFileFromCamera(getCameraName(num),file));
     end
-    videoName = ['ring' num2str(ringNum)];
+    videoName = ['ring' num2str(ringNum) '_' file];
     recordATempVideoFromCameras(vidObjectList,videoName);
 end
 
@@ -69,14 +76,19 @@ function recordATempVideoFromCameras(vidObjectList,videoName)
     v = VideoWriter(fileName);
     open(v);
     numCameras = length(vidObjectList);
+    numEmptyCams = 5 - numCameras;
     resX = 1280;
     resY = 1024;
-    frame = uint8(zeros(resY,resX*numCameras));
+    frame = uint8(zeros(resY,resX*5));
+    emptyFrame = uint8(zeros(resY,resX));
     scale = 4;
     tic
     for jj = 1:numFrames
         for i = 1:numCameras
             frame(:,(i-1)*resX+1:resX*i) = rgb2gray(readFrame(vidObjectList{i}));
+        end
+        for i = numCameras+1:5
+            frame(:,(i-1)*resX+1:resX*i) = emptyFrame;
         end
         writeVideo(v,frame(1:scale:end,1:scale:end));
     end
@@ -84,10 +96,10 @@ function recordATempVideoFromCameras(vidObjectList,videoName)
     toc
 end
 
-function recordCompiledVideoFromRings(ringNums)
+function recordCompiledVideoFromRings(ringNums,file)
     vidObjectList = {};
     for i = 1:length(ringNums)
-        videoName = ['ring' num2str(ringNums(i))];
+        videoName = ['ring' num2str(ringNums(i))  '_' file];
         fileName = ['C:\Users\User\Desktop\outputFiles\tempVideos\tempVideo_' videoName '.avi'];
         vidObjectList{i} = VideoReader(fileName);
     end
@@ -103,7 +115,7 @@ function recordCompiledVideoFromRings(ringNums)
     currDateTime = char(datetime('now'));
     currDateTime = strrep(currDateTime,' ','_');
     currDateTime = strrep(currDateTime,':','-');
-    v = VideoWriter(['C:\Users\User\Desktop\outputFiles\OutputVideo' currDateTime '.avi']);
+    v = VideoWriter(['C:\Users\User\Desktop\outputFiles\OutputVideo' currDateTime '_' file '.avi']);
     open(v);
 
     tic

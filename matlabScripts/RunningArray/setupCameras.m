@@ -1,7 +1,7 @@
 clear
 clc
 %INPUT THE LEADER CAMERA URL
-leaderURL = '10.19.2.102';
+leaderURL = '10.19.2.101';
 
 %get all the camera urls
 URLs = getAllCameraURLs();
