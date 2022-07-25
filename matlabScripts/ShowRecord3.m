@@ -3,8 +3,17 @@ clc
 close all
 format compact
 
-%% open a video writer to save the output
-recordVideo = false;
+%Script that will load the common name of a file for a trial from all
+%cameras and compile it into a single video. To manage matlab's resources,
+%it will load each ring at a time so it only has 5 videoReader's at a time,
+%then load all the compiled videos together for each ring. 
+
+%It tries to read every camera, and if a camera fails it replaces the video
+%it doesn't find with a black screen.
+
+%Note: if the camera is a 4 or 5 it flips the video vertically to be in
+%line with the other cams
+
 
 
 
@@ -12,16 +21,16 @@ recordVideo = false;
 %% First Camera
 URLs = getAllCameraURLs();
 numCameras = length(URLs);
-ringNums = [3];
-file = 'Video_23-Jul-2022_14-38-14';
-for ringNum = ringNums
+ringNums = [0 1 2 3 4 5 6 7 8 9];
+file = 'Video_23-Jul-2022_18-35-39';
+% for ringNum = ringNums
 %     try
-        recordVideoFromRing(ringNum,file);
+%         recordVideoFromRing(ringNum,file);
 %     catch
 %         disp(['ring ' num2str(ringNum) ' has an error and did not save right']);
 %     end
-end
-recordCompiledVideoFromRings([0,1,2,3,4,5,6,7,8],file);
+% end
+recordCompiledVideoFromRings([0,1,2,3,4,5,6,7,8, 9],file);
 
 %%
 function cameraName = getCameraName(cameraNumber)
@@ -33,11 +42,6 @@ function cameraName = getCameraName(cameraNumber)
     cameraName = ['camera' numStr];
 end
 
-function fileName = grabLastFileFromCamera(cameraName)
-    x = dir(['\\10.19.2.139\Public\' cameraName]);
-    fileName = [x(end).folder '\' x(end).name];
-end
-
 function fileName = grabThisFileFromCamera(cameraName,file)
     fileName = ['\\10.19.2.139\Public\' cameraName '\' file '.mp4']
 end
@@ -45,8 +49,8 @@ end
 function recordVideoFromRing(ringNum,file)
     oneToFive = [1 2 3 4 5];
     vidObjectList = {};
-    count = 0;
-    problemCams = [92 93 95 34];
+    successfullyLoaded = [false false false false false];
+    problemCams = [92 93 95 31];
     for i = oneToFive
         num = ringNum*10+i;
         if sum(num == problemCams)>0
