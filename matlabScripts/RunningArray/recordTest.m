@@ -26,7 +26,7 @@ disp("done saving")
 currDateTime = char(datetime('now'));
 currDateTime = strrep(currDateTime,' ','_');
 currDateTime = strrep(currDateTime,':','-');
-name = ['Video_' currDateTime '_40percLight'];
+name = ['Video_' currDateTime '_Godz20percLight'];
 runSaveMethodOnRings([0 1],name);
 runSaveMethodOnRings([2 3],name);
 runSaveMethodOnRings([4 5],name);
