@@ -1,38 +1,15 @@
-clear 
-clc
-close all
-format compact
+%%
 
-%Script that will load the common name of a file for a trial from all
-%cameras and compile it into a single video. To manage matlab's resources,
-%it will load each ring at a time so it only has 5 videoReader's at a time,
-%then load all the compiled videos together for each ring. 
-
-%It tries to read every camera, and if a camera fails it replaces the video
-%it doesn't find with a black screen.
-
-%Note: if the camera is a 4 or 5 it flips the video vertically to be in
-%line with the other cams
-
-
-
-
-
-%% First Camera
-URLs = getAllCameraURLs();
-numCameras = length(URLs);
-% ringNums = [0 1 2 3 4 5 6 7 8 9];
-ringNums = [0 1 2 3];
-% file = 'Video_25-Jul-2022_13-34-21_40percLight';
-% file = 'Video_25-Jul-2022_14-58-03_Godz20percLight';
-file  = 'snakeDrop4';
-resX = 1280;
-resY = 1024;
-for ringNum = ringNums
-    recordVideoFromRing(ringNum,file,resX,resY);
+function CompileVideoFromFile(file,ringNums)
+    disp(['compiling video for file: ' file])
+    resX = 1280;
+    resY = 1024;
+    for ringNum = ringNums
+        recordVideoFromRing(ringNum,file,resX,resY);
+    end
+    recordCompiledVideoFromRings(ringNums,file);
 end
-% recordCompiledVideoFromRings([0,1,2,3,4,5,6,7,8, 9],file);
-recordCompiledVideoFromRings([0,1,2,3],file);
+
 
 %%
 function cameraName = getCameraName(cameraNumber)
@@ -78,7 +55,7 @@ function recordATempVideoFromCameras(vidObjectList,successfullyLoaded,videoName,
     
     frame = uint8(zeros(resY,resX*5));
     emptyFrame = uint8(zeros(resY,resX));
-    scale = 4;
+    scale = 4*6;
     tic
     frameCount = 0;
     stillFrames = true;

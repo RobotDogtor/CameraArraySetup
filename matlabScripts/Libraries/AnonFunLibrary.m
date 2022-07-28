@@ -6,7 +6,7 @@
 %% commands
 startRecording = @(url) urlread(['http://' url '/control/startRecording']);
 stopRecording = @(url) urlread(['http://' url '/control/stopRecording']);
-stopSaving = @(url) webwrite(['http://' url '/control/stopFilesave']);
+stopSaving = @(url) urlread(['http://' url '/control/stopFilesave']);
 saveToSmbDefaultName = @(url) webwrite(['http://' url '/control/startFilesave'],'format','h264','device','smb'); % deprecated
 setDigitalGainTo6Db = @(url) webwrite(['http://' url '/control/p'],'digitalGain','2');
 setAnalogGainTo0Db = @(url) webwrite(['http://' url '/control/p'],'analogGain','1');
