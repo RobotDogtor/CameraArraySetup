@@ -372,7 +372,11 @@ function [Mr, T] = normM(M)
 
 
 for k = 1:size(M,1)/3
-
+%For each camera, takes all the points that are non nan and 
+  k
+  if k == 18
+      check = 90;
+  end
   Tk           = normu(M(k2i(k),find(~isnan(M(3*k,:)))));
   Mr(k2i(k),:) = Tk * M(k2i(k),:); T(k,1:3,1:3) = Tk;
 end

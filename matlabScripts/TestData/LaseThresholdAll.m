@@ -6,20 +6,61 @@ clc
 URLs = getAllCameraURLs();
 numCameras = length(URLs);
 
-num = 1;
-vidObj = VideoReader(grabThisFileFromCamera(getCameraName(num)));
-frame1 = readFrame(vidObj);
-frame2 = rgb2gray(frame1);
+cami = 0;
+for ringNum = [0 1 2 3]
+    for camNum = [1 2 3 4 5]
+        cami = cami + 1;
+        num = ringNum*10+camNum;
+        camName = getCameraName(num);
 
-vidObj.CurrentTime = 45;
+        disp(['processing points for camera ' camName])
+        tic
+        vidObj = VideoReader(grabThisFileFromCamera(camName));
+        [CameraXpoints, CameraYpoints] = processPointsForVideo(vidObj);
+        disp(['done processing for camera ' camName])
+        toc 
+        
+        Cameras(cami).CameraXpoints = CameraXpoints;
+        Cameras(cami).CameraYpoints = CameraYpoints;
+        Cameras(cami).numPoints = length(CameraXpoints);
+    end
+end
 
-i = 0;
-while hasFrame(vidObj)
-    i = i + 1;
-    frame = im2double(rgb2gray(readFrame(vidObj)));
-    other = frame.*(frame>0.9);
-    pause(0.001)
-    imshow(other)
+
+
+%%
+plot(CameraXpoints,CameraYpoints,'ro')
+axis([0 1 0 1])
+
+%%
+function [CameraXpoints, CameraYpoints] = processPointsForVideo(vidObj)
+    imThreshold = 0.9;
+    firstRowOfDisplay = 990;
+    CameraXpoints = [];
+    CameraYpoints = [];
+    while hasFrame(vidObj)
+        frame = im2double(rgb2gray(readFrame(vidObj)));
+        %1024x1280 - remove numbers at bottom
+        frame(firstRowOfDisplay:end,:) = frame(firstRowOfDisplay:end,:)*0;
+    
+        other = frame.*(frame>imThreshold);
+        % average thresholded part - maybe will have to average std dev
+        xs = [];
+        ys = [];
+        for i = 1:1024
+            for j = 1:1280
+                if(other(i,j)>imThreshold)
+                    xs = [xs j];
+                    ys = [ys i];
+                end
+            end
+        end
+        posX = mean(xs)/1280;
+        posY = (1024-mean(ys))/1024; %image loads from top left
+    
+        CameraXpoints = [CameraXpoints posX];
+        CameraYpoints = [CameraYpoints posY];
+    end
 end
 
 
