@@ -81,6 +81,16 @@ Go around to each camera and set the aperture to that and then adjust focus to b
 
 Put diffusers in.
 
-## Cameras Now
+## Cameras Problems
 
-Go through ring by ring and communicate and set settings
+Reboot screen, but the bar of options loads only.
+
+## Protocol
+
+don't turn on or off cameras while array is running or saving or anything!
+For Black calibration, if you show the cameras a consistent intensity of light, then decrease it, the video will be grainy until you calibrate again. Only go up in light intensity after black calibrating. Never show it any more light than you will record with.
+
+
+Process for focusing and setting the aperture on the cameras: One person in the array, put all the caps on. Take them off one by one and focus to ~1m into the array (slightly less). Use the live stream
+
+When the cameras start having trouble saving, go ahead and power cycle entire array, its not going to fix itself.

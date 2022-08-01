@@ -1,13 +1,13 @@
 %%
 
-function CompileVideoFromFile(file,ringNums)
+function CompileVideoFromFile(file,ringNumsToProcess,ringNumsToCompile)
     disp(['compiling video for file: ' file])
     resX = 1280;
     resY = 1024;
-    for ringNum = ringNums
+    for ringNum = ringNumsToProcess
         recordVideoFromRing(ringNum,file,resX,resY);
     end
-    recordCompiledVideoFromRings(ringNums,file);
+    recordCompiledVideoFromRings(ringNumsToCompile,file);
 end
 
 
@@ -40,6 +40,9 @@ function recordVideoFromRing(ringNum,file,resX,resY)
             successfullyLoaded(i) = false;
         end
     end
+    if length(vidObjectList)==0
+        error('no videos found for this video and this trial')
+    end
     videoName = ['ring' num2str(ringNum) '_' file];
     recordATempVideoFromCameras(vidObjectList,successfullyLoaded,videoName,resX,resY,camNums);
 end
@@ -55,7 +58,7 @@ function recordATempVideoFromCameras(vidObjectList,successfullyLoaded,videoName,
     
     frame = uint8(zeros(resY,resX*5));
     emptyFrame = uint8(zeros(resY,resX));
-    scale = 4*6;
+    scale = 4;
     tic
     frameCount = 0;
     stillFrames = true;
