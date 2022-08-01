@@ -7,8 +7,8 @@ URLs = getAllCameraURLs();
 numCameras = length(URLs);
 sc = 1/4;
 
-%setup the full, compiled frame
-url = ['http://' URLs{1} '/cgi-bin/screenCap?' num2str(rand)] ;
+%setup the full, compiled frame       imshow(rgb2gray(imread('http://10.19.2.102/cgi-bin/screenCap')))
+url = ['http://' URLs{5} '/cgi-bin/screenCap?' num2str(rand)] ;
 thisFrame  = rgb2gray(imread(url));
 xdimSize = length(thisFrame(1,:));
 ydimSize = length(thisFrame(:,1));
@@ -26,6 +26,7 @@ end
 
 %% find problem cameras
 problemi = [];
+
 for i = 1:numCameras
     url = ['http://' URLs{i} '/cgi-bin/screenCap'] ;
     try

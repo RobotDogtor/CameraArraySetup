@@ -6,7 +6,7 @@
 %% commands
 startRecording = @(url) urlread(['http://' url '/control/startRecording']);
 stopRecording = @(url) urlread(['http://' url '/control/stopRecording']);
-stopSaving = @(url) webwrite(['http://' url '/control/stopFilesave']);
+stopSaving = @(url) urlread(['http://' url '/control/stopFilesave']);
 saveToSmbDefaultName = @(url) webwrite(['http://' url '/control/startFilesave'],'format','h264','device','smb'); % deprecated
 setDigitalGainTo6Db = @(url) webwrite(['http://' url '/control/p'],'digitalGain','2');
 setAnalogGainTo0Db = @(url) webwrite(['http://' url '/control/p'],'analogGain','1');
@@ -14,6 +14,7 @@ setAnalogGainTo0Db = @(url) webwrite(['http://' url '/control/p'],'analogGain','
 setFrameRate = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
 setOverlayEnable = @(url) webwrite(['http://' url '/control/p'],'overlayEnable',true);
 
+startBlackCalibration = @(url) webwrite(['http://' url '/control/startCalibration'],'blackCal',true);
 
 %% IO Settings 
 options = weboptions('HeaderFields',{'Content-Type' 'application/json'});
