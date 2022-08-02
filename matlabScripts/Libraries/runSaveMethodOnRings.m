@@ -1,7 +1,7 @@
 function runSaveMethodOnRings(ringNums,fileName)
 
     for ringNum = ringNums
-        for i = 1:3
+        for i = 1:5
             num = ringNum*10+i;
             if num<10
                 additionalZero = '0';
