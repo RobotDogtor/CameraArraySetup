@@ -43,6 +43,7 @@ setIO1_Leader = @(url) webwrite(purl(url),struct('ioMappingIo1', struct('drive',
 setIO2 = @(url) webwrite(purl(url),struct('ioMappingIo2', struct('drive',0,'source', 'none', 'debounce', false, 'invert', false)),options);
 
 setIOThresh1 = @(url) webwrite(purl(url),struct('ioThresholdIo1', 0.5),options);
+setIOThresh1_5 = @(url) webwrite(purl(url),struct('ioThresholdIo1', 2.5),options);
 setIOThresh2 = @(url) webwrite(purl(url),struct('ioThresholdIo2', 2.49929),options);
 setIODelayTime = @(url) webwrite(purl(url),struct('ioDelayTime', 0.499999),options);
 
