@@ -11,8 +11,11 @@ saveToSmbDefaultName = @(url) webwrite(['http://' url '/control/startFilesave'],
 setDigitalGainTo6Db = @(url) webwrite(['http://' url '/control/p'],'digitalGain','2');
 setAnalogGainTo0Db = @(url) webwrite(['http://' url '/control/p'],'analogGain','1');
 
-setFrameRate = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
+setFrameRate1000 = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
+setFrameRate500 = @(url) webwrite(['http://' url '/control/p'],'frameRate','500');
+setRecMaxFrames4000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','4000');
 setOverlayEnable = @(url) webwrite(['http://' url '/control/p'],'overlayEnable',true);
+
 
 startBlackCalibration = @(url) webwrite(['http://' url '/control/startCalibration'],'blackCal',true);
 
