@@ -9,6 +9,7 @@ function runSaveMethodOnRings(ringNums,fileName)
                 additionalZero = '';
             end
             try
+                %  webwrite(['http://10.19.2.121/control/startFilesave'],'format','h264','device','smb','filename',fileName);
                 webwrite(['http://10.19.2.1' additionalZero num2str(num) '/control/startFilesave'],'format','h264','device','smb','filename',fileName);
                 disp(['camera ' num2str(num) ' started saving.'])
             catch

@@ -40,5 +40,11 @@ end
 % runMethodOnURLs(URLs,setDigitalGainTo6Db);
 % runMethodOnURLs(URLs,setAnalogGainTo0Db);
 
-%TODO: run the function to set up the leader camera
+% runMethodOnURLs(URLs,setFrameRate500);
+% runMethodOnURLs(URLs,setRecMaxFrames4000);
+% runMethodOnURLs(URLs,setFrameRate1000);
+% runMethodOnURLs(URLs,setRecMaxFrames8000);
+
+
+%% run the function to set up the leader camera
 setupCameraAsLeader(leaderURL);

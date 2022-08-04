@@ -4,6 +4,7 @@
 %urlread('http://10.19.2.102/control/p/externalStorage')
 
 %% commands
+%urlread(['http://10.19.2.102/control/p/overlayFormat'])
 startRecording = @(url) urlread(['http://' url '/control/startRecording']);
 stopRecording = @(url) urlread(['http://' url '/control/stopRecording']);
 stopSaving = @(url) urlread(['http://' url '/control/stopFilesave']);
@@ -14,7 +15,9 @@ setAnalogGainTo0Db = @(url) webwrite(['http://' url '/control/p'],'analogGain','
 setFrameRate1000 = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
 setFrameRate500 = @(url) webwrite(['http://' url '/control/p'],'frameRate','500');
 setRecMaxFrames4000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','4000');
+setRecMaxFrames8000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','8000');
 setOverlayEnable = @(url) webwrite(['http://' url '/control/p'],'overlayEnable',true);
+setMaxExposure = @(url) webwrite(['http://' url '/control/p'],'exposurePercent','100');
 
 
 startBlackCalibration = @(url) webwrite(['http://' url '/control/startCalibration'],'blackCal',true);

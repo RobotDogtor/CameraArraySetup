@@ -18,61 +18,68 @@ clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_19-56-58_MSpasma01_';
+file = 'Video_04-Aug-2022_19-01-23_RSedulus_Day3_T1';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
 clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_20-14-20_MSpasma02_';
+file = 'Video_04-Aug-2022_19-12-16_RSedulus_Day3_T2';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
 clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_20-38-15_MSpasma03_';
+file = 'Video_04-Aug-2022_19-19-32_RSedulus_Day3_T3';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
 clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_20-58-24_MSpasma04_';
+file = 'Video_04-Aug-2022_19-32-26_RSedulus_Day3_T4';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
 clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_21-26-43_HRidleyi_F_T01_';
+file = 'Video_04-Aug-2022_19-42-17_RSedulus_Day3_T5';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
 clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_21-47-34_HRidleyi_F_T02_';
+file = 'Video_04-Aug-2022_19-49-32_RSedulus_Day3_T6';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
 clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_22-04-33_RSedulus_M_T01_';
+file = 'Video_04-Aug-2022_19-57-27_RSedulus_Day3_T7';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
 clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_22-32-39_RSedulus_M_T02_';
+file = 'Video_04-Aug-2022_20-10-38_RSedulus_Day3_T8';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
 clear
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
-file = 'Video_02-Aug-2022_22-53-31_RSedulus_M_T03_';
+file = 'Video_04-Aug-2022_20-17-24_RSedulus_Day3_T9';
+CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
+
+clear
+clc
+close all
+ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
+file = 'Video_04-Aug-2022_20-27-16_RSedulus_Day3_T10';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
