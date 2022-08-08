@@ -106,10 +106,7 @@ function recordCompiledVideoFromRings(ringNums,file)
         end
     end
 
-    currDateTime = char(datetime('now'));
-    currDateTime = strrep(currDateTime,' ','_');
-    currDateTime = strrep(currDateTime,':','-');
-    v = VideoWriter(['C:\Users\User\Desktop\outputFiles\OutputVideo' currDateTime '_' file '.avi']);
+    v = VideoWriter(['C:\Users\User\Desktop\outputFiles\Compiled_' file '.avi']);
     open(v);
 
     tic
