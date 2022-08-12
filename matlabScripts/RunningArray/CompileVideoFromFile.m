@@ -43,7 +43,7 @@ function recordVideoFromRing(ringNum,file,resX,resY)
     if length(vidObjectList)==0
         error('no videos found for this video and this trial')
     end
-    videoName = ['ring' num2str(ringNum) '_' file];
+    videoName = [ file '_ring' num2str(ringNum)];
     recordATempVideoFromCameras(vidObjectList,successfullyLoaded,videoName,resX,resY,camNums);
 end
 
@@ -93,7 +93,7 @@ end
 function recordCompiledVideoFromRings(ringNums,file)
     vidObjectList = {};
     for i = 1:length(ringNums)
-        videoName = ['ring' num2str(ringNums(i))  '_' file];
+        videoName = [ file '_ring' num2str(ringNums(i))];
         fileName = ['C:\Users\User\Desktop\outputFiles\tempVideos\tempVideo_' videoName '.avi'];
         vidObjectList{i} = VideoReader(fileName);
     end
