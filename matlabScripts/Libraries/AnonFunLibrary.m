@@ -4,6 +4,7 @@
 %urlread('http://10.19.2.102/control/p/externalStorage')
 
 %% commands
+%urlread(['http://10.19.2.102/control/p/overlayFormat'])
 startRecording = @(url) urlread(['http://' url '/control/startRecording']);
 stopRecording = @(url) urlread(['http://' url '/control/stopRecording']);
 stopSaving = @(url) urlread(['http://' url '/control/stopFilesave']);
@@ -11,8 +12,20 @@ saveToSmbDefaultName = @(url) webwrite(['http://' url '/control/startFilesave'],
 setDigitalGainTo6Db = @(url) webwrite(['http://' url '/control/p'],'digitalGain','2');
 setAnalogGainTo0Db = @(url) webwrite(['http://' url '/control/p'],'analogGain','1');
 
-setFrameRate = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
+flushRecording = @(url) urlread(['http://' url '/control/flushRecording']);
+
+totalFramesPrint = @(url) urlread(['http://' url '/control/p/totalFrames']);
+
+setFrameRate1000 = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
+setFrameRate500 = @(url) webwrite(['http://' url '/control/p'],'frameRate','500');
+setRecMaxFrames4000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','4000');
+setRecMaxFrames8000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','8000');
+setRecMaxFrames9000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','9000');
 setOverlayEnable = @(url) webwrite(['http://' url '/control/p'],'overlayEnable',true);
+setOverlayEnableFalse = @(url) webwrite(['http://' url '/control/p'],'overlayEnable',false);
+setMaxExposure = @(url) webwrite(['http://' url '/control/p'],'exposurePercent','100');
+setRingBufferTrue = @(url) webwrite(['http://' url '/control/p'],'disableRingBuffer','false');
+
 
 startBlackCalibration = @(url) webwrite(['http://' url '/control/startCalibration'],'blackCal',true);
 
@@ -43,6 +56,7 @@ setIO1_Leader = @(url) webwrite(purl(url),struct('ioMappingIo1', struct('drive',
 setIO2 = @(url) webwrite(purl(url),struct('ioMappingIo2', struct('drive',0,'source', 'none', 'debounce', false, 'invert', false)),options);
 
 setIOThresh1 = @(url) webwrite(purl(url),struct('ioThresholdIo1', 0.5),options);
+setIOThresh1_5 = @(url) webwrite(purl(url),struct('ioThresholdIo1', 2.5),options);
 setIOThresh2 = @(url) webwrite(purl(url),struct('ioThresholdIo2', 2.49929),options);
 setIODelayTime = @(url) webwrite(purl(url),struct('ioDelayTime', 0.499999),options);
 

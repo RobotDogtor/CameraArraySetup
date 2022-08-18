@@ -28,13 +28,13 @@ end
 problemi = [];
 
 for i = 1:numCameras
-    url = ['http://' URLs{i} '/cgi-bin/screenCap'] ;
-    try
-        x = imread(url);
-    catch
-        problemi = [problemi i];
-    end
-    disp(i)
+%     url = ['http://' URLs{i} '/cgi-bin/screenCap'] ;
+%     try
+%         x = imread(url);
+%     catch
+%         problemi = [problemi i];
+%     end
+%     disp(i)
 end
 
 disp('Problem URLs')
