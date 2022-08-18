@@ -21,7 +21,7 @@ ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
 file = 'Video_09-Aug-2022_13-53-32_BatFlapping2';
 CompileVideoFromFile(file,ringNumsToCompile,ringNumsToCompile);
 
-clear
+clear  
 clc
 close all
 ringNumsToCompile = [0 1 2 3 4 5 6 7 8 9];
