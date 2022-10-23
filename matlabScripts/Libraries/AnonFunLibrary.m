@@ -18,6 +18,7 @@ totalFramesPrint = @(url) urlread(['http://' url '/control/p/totalFrames']);
 
 setFrameRate1000 = @(url) webwrite(['http://' url '/control/p'],'frameRate','1000');
 setFrameRate500 = @(url) webwrite(['http://' url '/control/p'],'frameRate','500');
+setFrameRate125 = @(url) webwrite(['http://' url '/control/p'],'frameRate','125');  % added by Abhradeep on Sept 6 for dltdv calibration 
 setRecMaxFrames4000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','4000');
 setRecMaxFrames8000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','8000');
 setRecMaxFrames9000 = @(url) webwrite(['http://' url '/control/p'],'recMaxFrames','9000');

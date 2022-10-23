@@ -6,10 +6,10 @@ clc
 URLs = getAllCameraURLs();
 numCameras = length(URLs);
 
-problemi = [];
+ problemi = [];
 
 for i = 1:numCameras
-    url = ['http://' URLs{i} '/cgi-bin/screenCap'] ;
+    url = ['http://' URLs{i} '/cgi-bin/screenCap'];
     try
         x = imread(url);
     catch
